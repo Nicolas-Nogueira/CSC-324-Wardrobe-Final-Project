@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Home Page for Wardrobe Website" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="CSS/style.css" rel="stylesheet" />
+</head>
+<body>
+   <header>
+      <nav>
+         <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="wardrobe.html" class="active">Wardrobe</a></li>
+         </ul>
+
+         <div class="nav-right">
+            <input type="text" placeholder="Search..." class="search-bar">
+            <img src="images/profilepic.png" alt="Profile" class="profile-pic">
+        </div>
+      </nav>
+   </header>
+
+   <main>
+
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-toggle" id="sidebarToggle"><img src="images/menuicon.png"></button>
+        <div class="filter-section">
+            <h4>Clothing Type</h4>
+            <label><input type="checkbox"> Shirts</label>
+            <label><input type="checkbox"> Jackets</label>
+            <label><input type="checkbox"> Pants</label>
+            <label><input type="checkbox"> Shorts</label>
+            <label><input type="checkbox"> Shoes</label>
+            <label><input type="checkbox"> Socks</label>
+            <label><input type="checkbox"> Scarves</label>
+            <label><input type="checkbox"> Jewellery</label>
+        </div>
+    
+        <div class="filter-section">
+            <h4>Season</h4>
+            <label><input type="checkbox"> Spring</label>
+            <label><input type="checkbox"> Summer</label>
+            <label><input type="checkbox"> Autumn</label>
+            <label><input type="checkbox"> Winter</label>
+        </div>
+    
+        <div class="filter-section">
+            <h4>Style</h4>
+            <label><input type="checkbox"> Casual</label>
+            <label><input type="checkbox"> Business Casual</label>
+            <label><input type="checkbox"> Formal</label>
+            <label><input type="checkbox"> Sportwear</label>
+        </div>
+    </div>
+   </main>
+
+
+   <script src="JS/sidebar.js"></script>
+</body>
+</html>
