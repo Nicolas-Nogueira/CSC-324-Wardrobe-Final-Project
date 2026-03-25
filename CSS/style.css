@@ -222,12 +222,7 @@ nav ul li a.active {
 .lock-btn {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 10px; 
 }
 
-.star-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
 
