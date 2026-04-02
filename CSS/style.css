@@ -138,29 +138,22 @@ nav ul li a.active {
 }
 
 /* Wardrobe Clothing Rows */
-/* .clothing-rows {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    top: 0%;
-} */
-
 .tops h2 {
-    margin-top: 8rem;
+    margin-top: 7rem; /* moves title down from top of page */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .bottoms h2 {
-    margin-top: 5rem;
+    margin-top: 3rem; /* moves title down from bottom of last container */
     display: flex;
     justify-content: center; 
     align-items: center;
 }
 
 .footwear h2 {
-    margin-top: 5rem;
+    margin-top: 3rem;
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -168,41 +161,40 @@ nav ul li a.active {
 
 .item-container {
     display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 300px;
+    grid-auto-flow: column; /* lays items out horizontally instead of vertically */
+    grid-auto-columns: 300px; /* gives items fixed width */
     gap: 3rem;
-    margin-top: 1rem;
+    margin-left: 50px;
     
-    overflow-x: scroll;
+    overflow-x: scroll; /* allows for horizontal scrolling when items overflow */
 
-    padding-block: 20px;
-
+    /* Responsive behavior for small screens */
     @media (width < 690px) {
-        grid-auto-flow: row;
+        grid-auto-flow: row; /* stack items vertically */
         justify-content: center;
     }
 }
 
+.image {
+    max-width: 100%; /* keeps image inside container */
+    height: auto;
+    border-radius: 10%;
+}
+
+/* adds style to area around image */
 .item {
-    text-align: center;
-    padding: 20px;
+    padding: 10px;
     background-color: #b5d1f9;
     border: 5px solid #849ab7;
-    border-radius: 10%;
+    border-radius: 10%; /* rounds card edges */
 
     display: grid;
-    grid-template-rows: 0.75fr 1fr;
 }
 
 .item .item-section {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.item h2 {
-    padding: 0;
-    margin: 0;
+    justify-content: space-between; /* spreads content evenly inside card */
 }
 
 /* outfit-generator */

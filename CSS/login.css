@@ -1,12 +1,14 @@
+/* Had some help from tutorial to help make the login page look nice */
+
 * {
-    box-sizing: border-box;
+    box-sizing: border-box; /* ensures padding/border don’t increase element size */
 }
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; /* full viewport height for centering vertically */
 }
 
 /* LOGIN PAGE */
@@ -17,7 +19,7 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;     
+    object-fit: cover; /* makes background image fill the screen without distortion */  
 }
 
 .login-page-wrapper {
@@ -27,17 +29,17 @@ body {
     background: transparent;
     border:2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px); /* creates the blur effect where the login/registration info is displayed*/
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; 
-    transition: height 0.2s ease; 
+    overflow: hidden; /* hides sliding forms when they move */
+    transition: height 0.2s ease; /* smooth height change when switching forms */
 }
 
 .login-page-wrapper.active {
-    height: 520px;
+    height: 520px; /* expands to fit register form */
 }
 
 .login-page-wrapper .form-box {
@@ -47,23 +49,23 @@ body {
 
 .login-page-wrapper .form-box.login {
     transition: transform 0.18s ease;
-    transform: translateX(0);
+    transform: translateX(0); /* login form starts visible */
 }
 
 .login-page-wrapper.active .form-box.login {
     transition: none;
-    transform: translateX(-400px);
+    transform: translateX(-400px); /* slides login form out to the left */
 }
 
 .login-page-wrapper .form-box.register {
     position: absolute;
     transition: none;
-    transform: translateX(400px);
+    transform: translateX(400px); /* starts off-screen to the right */
 }
 
 .login-page-wrapper.active .form-box.register {
     transition: transform 0.18s ease;
-    transform: translateX(0);
+    transform: translateX(0); /* slides into view */
 }
 
 .form-box h2 {
@@ -84,17 +86,17 @@ body {
     position: absolute;
     top: 50%;
     left: 5px;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* vertically centers label inside input */
     color: #000000;
     font-size: 1em;
     font-weight: 500;
-    pointer-events: none;
+    pointer-events: none; /* allows clicks to go through to input */
     transition: 0.5s;
 }
 
 .input-box input:focus~label,
 .input-box input:valid~label {
-    top: -5px;
+    top: -5px; /* moves label up when typing */
 }
 
 .input-box input {
@@ -119,7 +121,7 @@ body {
 }
 
 .remember-forgot label input {
-    accent-color: #000000;
+    accent-color: #000000; /* styles checkbox color */
     margin-right: 3px;
 }
 

@@ -1,11 +1,24 @@
-const wrapper = document.querySelector('.login-page-wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
+/* For the login page I did use some help from a tutorial for the best way of handleing login/registraion switching */
 
-registerLink.addEventListener('click', () => {
-    wrapper.classList.add('active');
-});
+class App{
+    constructor(){
+        this.wrapper = document.querySelector('.login-page-wrapper');
+        this.loginLink = document.querySelector('.login-link');
+        this.registerLink = document.querySelector('.register-link');
 
-loginLink.addEventListener('click', () => {
-    wrapper.classList.remove('active');
-});
+        this.addActiveTag();
+    }
+
+    /* listens for a button click and then adds/removes the class active to the wrapper */
+    addActiveTag(){
+        this.registerLink.addEventListener('click', () => {
+            this.wrapper.classList.add('active');
+        });
+
+        this.loginLink.addEventListener('click', () => {
+            this.wrapper.classList.remove('active');
+        });
+    }
+}
+
+export default App;
