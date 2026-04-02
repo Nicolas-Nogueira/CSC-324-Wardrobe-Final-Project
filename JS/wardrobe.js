@@ -1,78 +1,64 @@
-
-const items = [
-    {
-        "name": "iPhone 17 Pro",
-        "price": 1099.00,
-        "description": "The all-new iPhone 17 Pro. Any more pro and it would need an agent.",
-        "productCategory": "smartphone"
-    },
-    {
-        "name": "Samsung Galaxy S25 Ultra",
-        "price": 1299.99,
-        "description": "The all-new Samsung Galaxy S25 Ultra. Next-level power, next-level play.",
-        "productCategory": "smartphone"
-    },
-    {
-        "name": "Samsung Galaxy Z Fold7",
-        "price": 1999.99,
-        "description": "Experience the all-new Fold. The thinnest, lightest Galaxy Z Fold yet.",
-        "productCategory": "smartphone"
-    },
-    {
-        "name": "Google Pixel 10 Pro",
-        "price": 999.00,
-        "description": "Meet the new Pixel 10 Pro. Next-level everything.",
-        "productCategory": "smartphone"
-    },
-    {
-        "name": "Google Pixel 10 Pro Fold",
-        "price": 1799.00,
-        "description": "Meet the new Pixel 10 Pro Fold. Unfold Extraordinary."
+class App{
+    constructor(){
+        this.topContainer = document.querySelector("#top-items");
+        this.bottomContainer = document.querySelector("#bottom-items");
+        this.footwearContainer = document.querySelector("#footwear-items");
+        this.topImages = [];
+        this.bottomImages = [];
+        this.footwearImages = [];
+        this.queryClothes();
     }
-];
 
-const createItemCard = ({name, price, description}) => {
-    const item = document.createElement("div");
-    item.classList.add("item");
+    createClothingItem(){
+        const card = new createCard();
+        const itemsMapped1 = this.topImages.map(image => card(image));
+        itemsMapped1.forEach(image => this.topContainer.appendChild(image));
+    
+        const itemsMapped2 = this.bottomImages.map(image => card(image));
+        itemsMapped2.forEach(image => this.bottomContainer.appendChild(image));
+    
+        const itemsMapped3 = this.footwearImages.map(image => card(image));
+        itemsMapped3.forEach(image => this.footwearContainer.appendChild(image));
+    }
 
-    const itemSection1 = document.createElement("div");
-    itemSection1.classList.add("item-section");
-    item.appendChild(itemSection1);
+    async queryClothes(){
+        const response = await fetch("/clothes.json");
+        const data = await response.json();
+        for(const dataObject of data){
+            // this.createClothingItem(dataObject);
 
-    const itemName = document.createElement("h2");
-    itemName.classList.add("item-name");
-    itemName.textContent = name;
-    itemSection1.appendChild(itemName);
+            if (dataObject.category == "tops") {
+                this.topImages.push(dataObject);
+            }
+            if (dataObject.category == "bottoms") {
+                this.bottomImages.push(dataObject);
+            }
+            if (dataObject.category == "footwear") {
+                this.footwearImages.push(dataObject);
+            }
+        }
+        this.createClothingItem();
+    }
 
-    const itemPrice = document.createElement("p");
-    itemPrice.classList.add("item-price");
-    itemPrice.textContent = `$${price}`;
-    itemSection1.appendChild(itemPrice);
-
-    const itemSection2 = document.createElement("div");
-    itemSection2.classList.add("item-section");
-    item.appendChild(itemSection2);
-
-    const itemDesc = document.createElement("p");
-    itemDesc.classList.add("item-description");
-    itemDesc.textContent = description;
-    itemSection2.appendChild(itemDesc);
-
-    return item;
 }
 
-const createItems = () => {
-    const itemContainer1 = document.querySelector("#top-items");
-    const itemsMapped1 = items.map(item => createItemCard(item));
-    itemsMapped1.forEach(item => itemContainer1.appendChild(item));
+class createCard {
+    constructor(image) {
+        this.image = image;
+        this.createClothCard();
+    }
 
-    const itemContainer2 = document.querySelector("#bottom-items");
-    const itemsMapped2 = items.map(item => createItemCard(item));
-    itemsMapped2.forEach(item => itemContainer2.appendChild(item));
+    createClothCard() {
+        const item = document.createElement("div");
+        item.classList.add("item");
 
-    const itemContainer3 = document.querySelector("#accessory-items");
-    const itemsMapped3 = items.map(item => createItemCard(item));
-    itemsMapped3.forEach(item => itemContainer3.appendChild(item));
+        const imageSrc = document.createElement("img");
+        imageSrc.classList.add("image");
+        imageSrc.src = this.image.clothLink;
+        item.appendChild(imageSrc);
+
+        return item;
+    }
 }
 
-export default createItems;
+export default App;
