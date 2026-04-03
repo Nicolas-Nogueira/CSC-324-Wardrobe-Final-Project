@@ -10,6 +10,11 @@ class App{
         this.allBottomImages = [];
         this.allFootwearImages = [];
 
+        // Lock state tracking
+        this.topLocked = false;
+        this.bottomLocked = false;
+        this.shoesLocked = false;
+
         this.queryClothes();
 
         this.filter = document.querySelector('#sidebar');
@@ -32,36 +37,72 @@ class App{
         const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
         rightArrowShoes.addEventListener('click', this.nextShoes.bind(this));
         leftArrowShoes.addEventListener('click', this.previousShoes.bind(this));
+
+        //LOCK BUTTOM 
+        const topLockBtn = document.querySelector('#top-slot .lock-btn');
+        const bottomLockBtn = document.querySelector('#bottoms-slot .lock-btn');
+        const shoesLockBtn = document.querySelector('#shoes-slot .lock-btn');
+
+        topLockBtn.addEventListener('click', () => this.toggleLock('top'));
+        bottomLockBtn.addEventListener('click', () => this.toggleLock('bottoms'));
+        shoesLockBtn.addEventListener('click', () => this.toggleLock('shoes'));
     }
 
-    randomOutfit(){
+    toggleLock(slot) {
+        let lockBtn;
+        
+        // Determine which slot and get its button
+        if (slot === 'top') {
+            this.topLocked = !this.topLocked;
+            lockBtn = document.querySelector('#top-slot .lock-btn');
+        } else if (slot === 'bottoms') {
+            this.bottomLocked = !this.bottomLocked;
+            lockBtn = document.querySelector('#bottoms-slot .lock-btn');
+        } else if (slot === 'shoes') {
+            this.shoesLocked = !this.shoesLocked;
+            lockBtn = document.querySelector('#shoes-slot .lock-btn');
+        }
+        
+        // Update the lock button image and aria-pressed
+        const img = lockBtn.querySelector('img');
+        if (slot === 'top' ? this.topLocked : slot === 'bottoms' ? this.bottomLocked : this.shoesLocked) {
+            img.src = 'images/locked.png';
+            lockBtn.setAttribute('aria-pressed', 'true');
+        } else {
+            img.src = 'images/unlocked.png';
+            lockBtn.setAttribute('aria-pressed', 'false');
+        }
+    }
+
+    randomOutfit() {
         if (!this.topImages?.length || !this.bottomImages?.length || !this.footwearImages?.length) {
             console.warn("Missing images to generate an outfit.");
             return;
-          }
-
-        const randomTop = Math.floor(Math.random() * this.topImages.length)
-        const randomBottom =  Math.floor(Math.random() * this.bottomImages.length)
-        const randomFootwear =  Math.floor(Math.random() *this.footwearImages.length)
-
-        const topLink = this.topImages[randomTop].clothLink;
-        const bottomLink = this.bottomImages[randomBottom].clothLink;
-        const shoesLink = this.footwearImages[randomFootwear].clothLink;
-
+        }
+    
+        const randomTop = Math.floor(Math.random() * this.topImages.length);
+        const randomBottom = Math.floor(Math.random() * this.bottomImages.length);
+        const randomFootwear = Math.floor(Math.random() * this.footwearImages.length);
+    
         const topImageEl = document.querySelector("#top-image");
         const bottomImageEl = document.querySelector("#bottom-image");
         const shoesImageEl = document.querySelector("#shoes-image");
-
-        topImageEl.src = topLink;
-        bottomImageEl.src = bottomLink;
-        shoesImageEl.src = shoesLink;
-      
-
-        topImageEl.alt = "Random top";
-        bottomImageEl.alt = "Random bottom";
-        shoesImageEl.alt = "Random shoes";
-
-
+    
+        // Only change if NOT locked
+        if (!this.topLocked) {
+            topImageEl.src = this.topImages[randomTop].clothLink;
+            topImageEl.alt = "Random top";
+        }
+    
+        if (!this.bottomLocked) {
+            bottomImageEl.src = this.bottomImages[randomBottom].clothLink;
+            bottomImageEl.alt = "Random bottom";
+        }
+    
+        if (!this.shoesLocked) {
+            shoesImageEl.src = this.footwearImages[randomFootwear].clothLink;
+            shoesImageEl.alt = "Random shoes";
+        }
     }
 
     //this method fetches the clothes from the json and pushes them to there correct array
@@ -162,6 +203,8 @@ class App{
 
     // TOP ARROW METHODS
     nextTop() {
+        if (this.topLocked) return;
+
         if (this.currentTopIndex < this.topImages.length - 1) {
             this.currentTopIndex++;
         } else {
@@ -171,6 +214,8 @@ class App{
     }
     
     previousTop() {
+        if (this.topLocked) return;
+
         if (this.currentTopIndex > 0) {
             this.currentTopIndex--;
         } else {
@@ -181,6 +226,7 @@ class App{
 
     // BOTTOM ARROW METHODS
     nextBottom() {
+        if (this.bottomLockedLocked) return;
         if (this.currentBottomIndex < this.bottomImages.length - 1) {
             this.currentBottomIndex++;
         } else {
@@ -190,6 +236,8 @@ class App{
     }
     
     previousBottom() {
+        if (this.bottomLockedLocked) return;
+
         if (this.currentBottomIndex > 0) {
             this.currentBottomIndex--;
         } else {
@@ -200,6 +248,8 @@ class App{
 
     // SHOES ARROW METHODS
     nextShoes() {
+        if (this.shoesLockedLockedLocked) return;
+
         if (this.currentShoesIndex < this.footwearImages.length - 1) {
             this.currentShoesIndex++;
         } else {
@@ -209,6 +259,8 @@ class App{
     }
     
     previousShoes() {
+        if (this.shoesLockedLockedLocked) return;
+        
         if (this.currentShoesIndex > 0) {
             this.currentShoesIndex--;
         } else {
