@@ -9,6 +9,11 @@ class App{
         this.allTopImages = [];
         this.allBottomImages = [];
         this.allFootwearImages = [];
+        
+        // index starts at 0 for next and prev
+        this.currentTopIndex = 0;
+        this.currentBottomIndex = 0;
+        this.currentShoesIndex = 0;
 
         // Lock state tracking
         this.topLocked = false;
