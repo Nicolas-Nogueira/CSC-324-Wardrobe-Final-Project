@@ -140,7 +140,7 @@ nav ul li a.active {
 
 /* Wardrobe Clothing Rows */
 .tops h2 {
-    margin-top: 7rem; /* moves title down from top of page */
+    margin-top: 2rem; /* moves title down from top of page */
     display: flex;
     justify-content: center;
     align-items: center;
