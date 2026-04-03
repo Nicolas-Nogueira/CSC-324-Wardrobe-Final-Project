@@ -13,47 +13,29 @@
 ---
 
 # Project Structure 
-WARDRODE/
-├── index.html              # Main outfit generator page
-├── login.html              # Login & registration page
-├── wardrobe.html           # Wardrobe browsing page
-├── clothes.json            # Data file with all clothing items
-│
-├── CSS/                    # Stylesheets
-│   ├── style.css          # Main styling (home page, wardrobe page, navbar, sidebar)
-│   └── login.css          # Login page styling
-│
-├── JS/                    # JavaScript modules
-│   ├── genOutfits.js      # Outfit generator logic (index.html)
-│   │   ├── queryClothes()           # Fetch clothes from JSON
-│   │   ├── randomOutfit()           # Generate random outfit
-│   │   ├── filterItems()            # Apply filters to clothing
-│   │   ├── nextTop/previousTop()    # Navigate through tops with arrows
-│   │   ├── nextBottom/previousBottom() # Navigate through bottoms
-│   │   ├── nextShoes/previousShoes()  # Navigate through shoes
-│   │   └── displayTop/Bottom/Shoes()  # Update displayed images
-│   │
-│   ├── wardrobe.js        # Wardrobe page logic (wardrobe.html)
-│   │   ├── queryClothes()  # Fetch all clothing items
-│   │   ├── createClothingItem() # Create cards for each item
-│   │   ├── filterItems()   # Filter clothing by type/season/style
-│   │   └── filterMatch()   # Helper to match filter criteria
-│   │
-│   ├── login.js           # Login page logic (login.html)
-│   │   ├── constructor()   # Initialize form switching
-│   │   └── addActiveTag()  # Toggle login/register forms
-│   │
-│   └── sidebar.js         # Sidebar toggle functionality
-│       └── Sidebar filter management
-│
-├── images/               # Asset images
-│   ├── profilepic.png
-│   ├── menuicon.png
-│   ├── unlocked.png
-│   ├── locked.png
-│   └── clothing images (hoodies, shorts, shoes, etc.)
-│
-├── .vscode/             # VS Code settings
-└── README.md           # This file
+- CSS folder
+   - Login.css: contains our CSS for the login and registration page, we separated this as they were very different to our main pages
+   - style.css: contains all the CSS for our home and wardrobe page
+ 
+- images folder
+   - has all our clothing images uploaded as well as button images and some old placeholder images
+ 
+- JS folder
+   - genOutfits.js: the App for the home page includes generate, arrows, lock, and filtering, 
+   - login.js: the functionality of the sliding window of our login/registration page
+   - sidebar.js: the functionality of how the toggle button works on our sidebar
+   - wardrobe.js: the App for the wardrobe page includes creating our rows and the filtering
+ 
+- clothes.json: our json file with our clothing objects
+
+- index.html: our home page html
+
+- login.html: the login/registration page html
+  
+- README.md: this file
+
+- wardrobe.html: the wardrobe page html
+ 
+
 
 
