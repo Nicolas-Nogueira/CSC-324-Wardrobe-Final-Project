@@ -20,25 +20,25 @@ class App{
         this.filter = document.querySelector('#sidebar');
         this.filter.addEventListener('change',this.filterItems.bind(this));
 
-        // TOP ARROWS
+        // Top arrows
         const rightArrowTop = document.querySelector('#top-slot .arrow-btn-right-arrow');
         const leftArrowTop = document.querySelector('#top-slot .arrow-btn-left-arrow');
         rightArrowTop.addEventListener('click', this.nextTop.bind(this));
         leftArrowTop.addEventListener('click', this.previousTop.bind(this));
  
-        // BOTTOM ARROWS
+        // Bottom arrows
         const rightArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-right-arrow');
         const leftArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-left-arrow');
         rightArrowBottom.addEventListener('click', this.nextBottom.bind(this));
         leftArrowBottom.addEventListener('click', this.previousBottom.bind(this));
  
-        // SHOES ARROWS
+        // Shoes arrows
         const rightArrowShoes = document.querySelector('#shoes-slot .arrow-btn-right-arrow');
         const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
         rightArrowShoes.addEventListener('click', this.nextShoes.bind(this));
         leftArrowShoes.addEventListener('click', this.previousShoes.bind(this));
 
-        //LOCK BUTTOM 
+        //Lock bottom
         const topLockBtn = document.querySelector('#top-slot .lock-btn');
         const bottomLockBtn = document.querySelector('#bottoms-slot .lock-btn');
         const shoesLockBtn = document.querySelector('#shoes-slot .lock-btn');
@@ -74,16 +74,19 @@ class App{
         }
     }
 
+    // Gen Oufit
     randomOutfit() {
         if (!this.topImages?.length || !this.bottomImages?.length || !this.footwearImages?.length) {
             console.warn("Missing images to generate an outfit.");
             return;
         }
     
+        // gen a random num from 0 to the lenght of the image array 
         const randomTop = Math.floor(Math.random() * this.topImages.length);
         const randomBottom = Math.floor(Math.random() * this.bottomImages.length);
         const randomFootwear = Math.floor(Math.random() * this.footwearImages.length);
     
+
         const topImageEl = document.querySelector("#top-image");
         const bottomImageEl = document.querySelector("#bottom-image");
         const shoesImageEl = document.querySelector("#shoes-image");
@@ -176,7 +179,7 @@ class App{
         return false;
     }
 
-    // DISPLAY METHODS FOR ARROWS
+    // Display methods for all 3 
     displayTop() {
         const topImageEl = document.querySelector("#top-image");
         const topObject = this.topImages[this.currentTopIndex];
@@ -201,7 +204,7 @@ class App{
         shoesImageEl.alt = shoesObject.name;
     }
 
-    // TOP ARROW METHODS
+    // Top arrows method 
     nextTop() {
         if (this.topLocked) return;
 
@@ -224,9 +227,9 @@ class App{
         this.displayTop();
     }
 
-    // BOTTOM ARROW METHODS
+    // Bottom arrow methods 
     nextBottom() {
-        if (this.bottomLockedLocked) return;
+        if (this.bottomLocked) return;
         if (this.currentBottomIndex < this.bottomImages.length - 1) {
             this.currentBottomIndex++;
         } else {
@@ -236,7 +239,7 @@ class App{
     }
     
     previousBottom() {
-        if (this.bottomLockedLocked) return;
+        if (this.bottomLocked) return;
 
         if (this.currentBottomIndex > 0) {
             this.currentBottomIndex--;
@@ -246,7 +249,7 @@ class App{
         this.displayBottom();
     }
 
-    // SHOES ARROW METHODS
+    // Shoes arrow methods 
     nextShoes() {
         if (this.shoesLocked) return;
 
@@ -260,7 +263,7 @@ class App{
     
     previousShoes() {
         if (this.shoesLocked) return;
-        
+
         if (this.currentShoesIndex > 0) {
             this.currentShoesIndex--;
         } else {
