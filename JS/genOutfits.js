@@ -168,7 +168,7 @@ class App{
             if (filters.includes(style)) return true;
         }
         
-        // Check if any of the seasons in the item.season list are checked
+        // check if any of the seasons in the item.season list are checked
         for (const season of item.season) {
             if (filters.includes(season)) return true;
         }
@@ -248,7 +248,7 @@ class App{
 
     // SHOES ARROW METHODS
     nextShoes() {
-        if (this.shoesLockedLockedLocked) return;
+        if (this.shoesLocked) return;
 
         if (this.currentShoesIndex < this.footwearImages.length - 1) {
             this.currentShoesIndex++;
@@ -259,7 +259,7 @@ class App{
     }
     
     previousShoes() {
-        if (this.shoesLockedLockedLocked) return;
+        if (this.shoesLocked) return;
         
         if (this.currentShoesIndex > 0) {
             this.currentShoesIndex--;

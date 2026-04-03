@@ -281,7 +281,7 @@ nav ul li a.active {
     background-color: var(--color-light);      
     color: var(--color-cta);                  
     border: 2px solid var(--color-cta);      
-    border-radius: 999px;
+    border-radius: 999px; /* rounded button */
     padding: 0.6rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;

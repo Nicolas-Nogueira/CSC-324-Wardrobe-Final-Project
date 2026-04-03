@@ -99,7 +99,7 @@ class App{
             if (filters.includes(style)) return true;
         }
         
-        // Check if any of the seasons in the item.season list are checked
+        // check if any of the seasons in the item.season list are checked
         for (const season of item.season) {
             if (filters.includes(season)) return true;
         }
@@ -123,6 +123,7 @@ class CreateCard {
         const imageSrc = document.createElement("img");
         imageSrc.classList.add("image");
         imageSrc.src = this.image.clothLink;
+        imageSrc.alt = this.image.name;
         item.appendChild(imageSrc);
 
         return item;
