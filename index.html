@@ -7,6 +7,13 @@
     <title>Document</title>
 
     <link href="CSS/style.css" rel="stylesheet" />
+
+<!-- 
+    <script type="module">
+      import App from './JS/index.js';
+      const app = new App();
+  </script> -->
+
 </head>
 <body>
    <header>
@@ -51,47 +58,55 @@
          </div>
      </div>
 
-     <section id ="outfit-generator">
-      
-      <div class = "clothing-windows">
-         
-         <div class ="clothing-windows" id = "top-slot">
-            <button class = "arrow-btn-left-arrow" aria-label="Previous item"> &#8592;</button>
-            <figure class="clothing-display">
-               <img src="" alt="Selected top">
-               <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
-                  <img src="images/unlocked.png" alt="Lock">
-              </button>
-            </figure>
-            <button class = "arrow-btn-right-arrow" aria-label="Next item"> &#8594; </button>
-         </div>
-
-         <div class ="clothing-windows" id = "bottoms-slot">
-            <button class = "arrow-btn-left-arrow" aria-label="Previous item"> &#8592;</button>
-            <figure class="clothing-display">
-               <img src="" alt="Selected bottoms">
-               <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
-                  <img src="images/unlocked.png" alt="Lock">
-              </button>
-            </figure>
-            <button class = "arrow-btn-right-arrow" aria-label="Next item"> &#8594; </button>
-         </div>
-
-
-         <div class ="clothing-windows" id = "shoes-slot">
-            <button class = "arrow-btn-left-arrow" aria-label="Previous item"> &#8592;</button>
-            <figure class="clothing-display">
-               <img src="" alt="Selected shoes">
-               <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
-                  <img src="images/unlocked.png" alt="Lock">
-              </button>
-            </figure>
-            <button class = "arrow-btn-right-arrow" aria-label="Next item"> &#8594; </button>
-         </div>
+     <section id="outfit-generator">
+      <div class="clothing-container">
+    
+        <!-- TOP SLOT -->
+        <div class="clothing-windows" id="top-slot">
+          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+    
+          <figure class="clothing-display">
+            <!-- main clothing image -->
+            <img src="images/arsHood.jpeg" alt="">
+            <!-- lock button inside the box -->
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+              <img src="images/unlocked.png" alt="">
+            </button>
+          </figure>
+    
+          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+        </div>
+    
+        <!-- BOTTOMS SLOT -->
+        <div class="clothing-windows" id="bottoms-slot">
+          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+    
+          <figure class="clothing-display">
+            <img src="images/blackShort.jpeg" alt="">
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+              <img src="images/unlocked.png" alt="">
+            </button>
+          </figure>
+    
+          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+        </div>
+    
+        <!-- SHOES SLOT -->
+        <div class="clothing-windows" id="shoes-slot">
+          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+    
+          <figure class="clothing-display">
+            <img src="images/redShoes.jpeg" alt="">
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+              <img src="images/unlocked.png" alt="">
+            </button>
+          </figure>
+    
+          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+        </div>
+    
       </div>
-
-
-     </section>
+    </section>
      </main>
 
 
