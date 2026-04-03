@@ -8,11 +8,24 @@
 
     <link href="CSS/style.css" rel="stylesheet" />
 
-<!-- 
+
     <script type="module">
-      import App from './JS/index.js';
-      const app = new App();
-  </script> -->
+      import App from "./JS/genOutfits.js";
+    
+      document.addEventListener("DOMContentLoaded", () => {
+        const generateBtn = document.querySelector("#generate-outfit-btn");
+        if (!generateBtn) {
+          console.error("Generate button not found (#generate-outfit-btn).");
+          return;
+        }
+    
+        const app = new App(generateBtn); // pass the button in
+    
+        generateBtn.addEventListener("click", () => {
+          app.randomOutfit();
+        });
+      });
+    </script>
 
 </head>
 <body>
@@ -60,6 +73,8 @@
 
      <section id="outfit-generator">
       <div class="clothing-container">
+
+         <button id="generate-outfit-btn" type="button" >Generate Outfit</button>
     
         <!-- TOP SLOT -->
         <div class="clothing-windows" id="top-slot">
@@ -67,7 +82,7 @@
     
           <figure class="clothing-display">
             <!-- main clothing image -->
-            <img src="images/arsHood.jpeg" alt="">
+            <img id ="top-image" src="images/arsHood.jpeg" alt="top-image">
             <!-- lock button inside the box -->
             <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
               <img src="images/unlocked.png" alt="">
@@ -82,7 +97,7 @@
           <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
     
           <figure class="clothing-display">
-            <img src="images/blackShort.jpeg" alt="">
+            <img id = "bottom-image" src="images/blackShort.jpeg" alt="bottom-image">
             <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
               <img src="images/unlocked.png" alt="">
             </button>
@@ -96,7 +111,7 @@
           <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
     
           <figure class="clothing-display">
-            <img src="images/redShoes.jpeg" alt="">
+            <img id = "shoes-image" src="images/redShoes.jpeg" alt="shoes-image">
             <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
               <img src="images/unlocked.png" alt="">
             </button>

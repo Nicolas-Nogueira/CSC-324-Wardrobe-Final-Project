@@ -222,9 +222,9 @@ nav ul li a.active {
     min-height: 260px;        
   
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--color-cta);
     border-radius: 10px;
-    background-color: #fff;
+    background-color: var(--color-base);
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
   
@@ -247,20 +247,33 @@ nav ul li a.active {
     display: block;
     object-fit: contain;
   }
-  
+
+/* main clothing images (top, bottoms, shoes) */
+#top-image,
+#bottom-image,
+#shoes-image {
+  max-width: 100%;
+  max-height: 220px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
   /* keep your arrow look; just positioned by flex row now */
   .arrow-btn-left-arrow,
   .arrow-btn-right-arrow {
-   
+    /* background: none;
+    border: none;
+    cursor: pointer; */
     font-size: 2rem;
     padding: 0.25rem 0.5rem;
   }
   
   /* lock button stays inside the box, under the image */
   .lock-btn {
-    background: none;
+    /* background: none;
     border: none;
-    cursor: pointer;
+    cursor: pointer; */
     padding: 0;
   }
   
@@ -268,4 +281,25 @@ nav ul li a.active {
     width: 32px;             
     height: 32px;
     display: block;
+  }
+
+  #generate-outfit-btn {
+    background-color: var(--color-light);      
+    color: var(--color-cta);                  
+    border: 2px solid var(--color-cta);      
+    border-radius: 999px;
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  #generate-outfit-btn:hover {
+    background-color: var(--color-cta);       
+    color: var(--color-light);                
+  }
+  
+  #generate-outfit-btn:active {
+    background-color: var(--color-cta-dark);  
+    color: var(--color-light);
   }
