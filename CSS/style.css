@@ -185,8 +185,8 @@ nav ul li a.active {
 /* adds style to area around image */
 .item {
     padding: 10px;
-    background-color: #b5d1f9;
-    border: 5px solid #849ab7;
+    background-color: var(--color-accent-2);
+    border: 5px solid var(--color-accent-1);
     border-radius: 10%; /* rounds card edges */
 
     display: grid;
