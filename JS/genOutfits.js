@@ -14,6 +14,24 @@ class App{
 
         this.filter = document.querySelector('#sidebar');
         this.filter.addEventListener('change',this.filterItems.bind(this));
+
+        // TOP ARROWS
+        const rightArrowTop = document.querySelector('#top-slot .arrow-btn-right-arrow');
+        const leftArrowTop = document.querySelector('#top-slot .arrow-btn-left-arrow');
+        rightArrowTop.addEventListener('click', this.nextTop.bind(this));
+        leftArrowTop.addEventListener('click', this.previousTop.bind(this));
+ 
+        // BOTTOM ARROWS
+        const rightArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-right-arrow');
+        const leftArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-left-arrow');
+        rightArrowBottom.addEventListener('click', this.nextBottom.bind(this));
+        leftArrowBottom.addEventListener('click', this.previousBottom.bind(this));
+ 
+        // SHOES ARROWS
+        const rightArrowShoes = document.querySelector('#shoes-slot .arrow-btn-right-arrow');
+        const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
+        rightArrowShoes.addEventListener('click', this.nextShoes.bind(this));
+        leftArrowShoes.addEventListener('click', this.previousShoes.bind(this));
     }
 
     randomOutfit(){
@@ -115,6 +133,88 @@ class App{
         }
         
         return false;
+    }
+
+    // DISPLAY METHODS FOR ARROWS
+    displayTop() {
+        const topImageEl = document.querySelector("#top-image");
+        const topObject = this.topImages[this.currentTopIndex];
+        
+        topImageEl.src = topObject.clothLink;
+        topImageEl.alt = topObject.name;
+    }
+
+    displayBottom(){
+        const bottomImageEl = document.querySelector("#bottom-image");
+        const bottomObject = this.bottomImages[this.currentBottomIndex];
+        
+        bottomImageEl.src = bottomObject.clothLink;
+        bottomImageEl.alt = bottomObject.name;
+    }
+
+    displayShoes(){
+        const shoesImageEl = document.querySelector("#shoes-image");
+        const shoesObject = this.footwearImages[this.currentShoesIndex];
+        
+        shoesImageEl.src = shoesObject.clothLink;
+        shoesImageEl.alt = shoesObject.name;
+    }
+
+    // TOP ARROW METHODS
+    nextTop() {
+        if (this.currentTopIndex < this.topImages.length - 1) {
+            this.currentTopIndex++;
+        } else {
+            this.currentTopIndex = 0;
+        }
+        this.displayTop();
+    }
+    
+    previousTop() {
+        if (this.currentTopIndex > 0) {
+            this.currentTopIndex--;
+        } else {
+            this.currentTopIndex = this.topImages.length - 1;
+        }
+        this.displayTop();
+    }
+
+    // BOTTOM ARROW METHODS
+    nextBottom() {
+        if (this.currentBottomIndex < this.bottomImages.length - 1) {
+            this.currentBottomIndex++;
+        } else {
+            this.currentBottomIndex = 0;
+        }
+        this.displayBottom();
+    }
+    
+    previousBottom() {
+        if (this.currentBottomIndex > 0) {
+            this.currentBottomIndex--;
+        } else {
+            this.currentBottomIndex = this.bottomImages.length - 1;
+        }
+        this.displayBottom();
+    }
+
+    // SHOES ARROW METHODS
+    nextShoes() {
+        if (this.currentShoesIndex < this.footwearImages.length - 1) {
+            this.currentShoesIndex++;
+        } else {
+            this.currentShoesIndex = 0;
+        }
+        this.displayShoes();
+    }
+    
+    previousShoes() {
+        if (this.currentShoesIndex > 0) {
+            this.currentShoesIndex--;
+        } else {
+            this.currentShoesIndex = this.footwearImages.length - 1;
+        }
+        this.displayShoes();
     }
 }
 

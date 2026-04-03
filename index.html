@@ -13,17 +13,14 @@
       import App from "./JS/genOutfits.js";
     
       document.addEventListener("DOMContentLoaded", () => {
+        const app = new App();
+        
         const generateBtn = document.querySelector("#generate-outfit-btn");
-        if (!generateBtn) {
-          console.error("Generate button not found (#generate-outfit-btn).");
-          return;
+        if (generateBtn) {
+          generateBtn.addEventListener("click", () => {
+            app.randomOutfit();
+          });
         }
-    
-        const app = new App(generateBtn); // pass the button in
-    
-        generateBtn.addEventListener("click", () => {
-          app.randomOutfit();
-        });
       });
     </script>
 
