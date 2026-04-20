@@ -1,4 +1,3 @@
-
 class App{
     constructor(){
         this.topImages = [];
@@ -91,26 +90,21 @@ class App{
         const randomBottom = Math.floor(Math.random() * this.bottomImages.length);
         const randomFootwear = Math.floor(Math.random() * this.footwearImages.length);
     
-
-        const topImageEl = document.querySelector("#top-image");
-        const bottomImageEl = document.querySelector("#bottom-image");
-        const shoesImageEl = document.querySelector("#shoes-image");
-    
         // Only change if NOT locked
         if (!this.topLocked) {
-            topImageEl.src = this.topImages[randomTop].clothLink;
-            topImageEl.alt = "Random top";
+            this.currentTopIndex = randomTop;
         }
     
         if (!this.bottomLocked) {
-            bottomImageEl.src = this.bottomImages[randomBottom].clothLink;
-            bottomImageEl.alt = "Random bottom";
+            this.currentBottomIndex = randomBottom;
         }
     
         if (!this.shoesLocked) {
-            shoesImageEl.src = this.footwearImages[randomFootwear].clothLink;
-            shoesImageEl.alt = "Random shoes";
+            this.currentShoesIndex = randomFootwear;
         }
+
+        // Validate and display the outfit
+        this.displayOutfit();
     }
 
     //this method fetches the clothes from the json and pushes them to there correct array
@@ -184,29 +178,49 @@ class App{
         return false;
     }
 
-    // Display methods for all 3 
-    displayTop() {
-        const topImageEl = document.querySelector("#top-image");
-        const topObject = this.topImages[this.currentTopIndex];
+    // Unified display method with filter validation
+    displayOutfit() {
+        const top = this.topImages[this.currentTopIndex];
+        const bottom = this.bottomImages[this.currentBottomIndex];
+        const shoes = this.footwearImages[this.currentShoesIndex];
         
-        topImageEl.src = topObject.clothLink;
-        topImageEl.alt = topObject.name;
+        if (this.outfitIsValid(top, bottom, shoes)) {
+            // Display all three items
+            this.updateImageElement("#top-image", top);
+            this.updateImageElement("#bottom-image", bottom);
+            this.updateImageElement("#shoes-image", shoes);
+        } else {
+            // Generate new outfit if no matching filters
+            this.randomOutfit();
+        }
     }
 
-    displayBottom(){
-        const bottomImageEl = document.querySelector("#bottom-image");
-        const bottomObject = this.bottomImages[this.currentBottomIndex];
-        
-        bottomImageEl.src = bottomObject.clothLink;
-        bottomImageEl.alt = bottomObject.name;
+    // Helper method to update image elements and reduce code duplication
+    updateImageElement(selector, clothingItem) {
+        const imageEl = document.querySelector(selector);
+        imageEl.src = clothingItem.clothLink;
+        imageEl.alt = clothingItem.name;
     }
 
-    displayShoes(){
-        const shoesImageEl = document.querySelector("#shoes-image");
-        const shoesObject = this.footwearImages[this.currentShoesIndex];
+    // Check if outfit items share at least one common filter
+    outfitIsValid(top, bottom, shoes) {
+        const topFilters = this.getItemFilters(top);
+        const bottomFilters = this.getItemFilters(bottom);
+        const shoeFilters = this.getItemFilters(shoes);
         
-        shoesImageEl.src = shoesObject.clothLink;
-        shoesImageEl.alt = shoesObject.name;
+        // Find if there's at least one common filter across all three
+        return topFilters.some(f => 
+            bottomFilters.includes(f) && shoeFilters.includes(f)
+        );
+    }
+
+    // Extract all filters (clothing type, style, season) from an item
+    getItemFilters(item) {
+        return [
+            item.clothingType,
+            ...item.style,
+            ...item.season
+        ];
     }
 
     // Top arrows method 
@@ -218,7 +232,7 @@ class App{
         } else {
             this.currentTopIndex = 0;
         }
-        this.displayTop();
+        this.displayOutfit();
     }
     
     previousTop() {
@@ -229,7 +243,7 @@ class App{
         } else {
             this.currentTopIndex = this.topImages.length - 1;
         }
-        this.displayTop();
+        this.displayOutfit();
     }
 
     // Bottom arrow methods 
@@ -240,7 +254,7 @@ class App{
         } else {
             this.currentBottomIndex = 0;
         }
-        this.displayBottom();
+        this.displayOutfit();
     }
     
     previousBottom() {
@@ -251,7 +265,7 @@ class App{
         } else {
             this.currentBottomIndex = this.bottomImages.length - 1;
         }
-        this.displayBottom();
+        this.displayOutfit();
     }
 
     // Shoes arrow methods 
@@ -263,7 +277,7 @@ class App{
         } else {
             this.currentShoesIndex = 0;
         }
-        this.displayShoes();
+        this.displayOutfit();
     }
     
     previousShoes() {
@@ -274,7 +288,7 @@ class App{
         } else {
             this.currentShoesIndex = this.footwearImages.length - 1;
         }
-        this.displayShoes();
+        this.displayOutfit();
     }
 }
 
