@@ -168,3 +168,16 @@ body {
 .login-register a:hover {
     text-decoration: underline;
 }
+
+.hidden {
+    display: none;
+}
+
+.form-error {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 15px;
+}
