@@ -18,6 +18,7 @@ body {
 
 nav {
     position: fixed; /* always stays on screen */
+    z-index: 10;
     top: 0;
     inline-size: 100%; /* full width */
     display: flex;
@@ -184,6 +185,7 @@ nav ul li a.active {
 
 /* adds style to area around image */
 .item {
+    position: relative;
     padding: 10px;
     background-color: var(--color-accent-2);
     border: 5px solid var(--color-accent-1);
@@ -196,6 +198,19 @@ nav ul li a.active {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* spreads content evenly inside card */
+}
+
+.card-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 /* outfit-generator */

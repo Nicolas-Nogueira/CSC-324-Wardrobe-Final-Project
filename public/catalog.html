@@ -10,7 +10,7 @@
 
     <script type="module">
         /* TODO: See Part 4 of README.md */
-        import App from './JS/wardrobe.js';
+        import App from './JS/catalog.js';
         const app = new App();
     </script>
 </head>
@@ -19,8 +19,8 @@
       <nav>
          <ul>
             <li><a href="home.html">Home</a></li>
-            <li><a href="wardrobe.html" class="active">Your Wardrobe</a></li>
-            <li><a href="catalog.html">Our Catalog</a></li>
+            <li><a href="wardrobe.html">Your Wardrobe</a></li>
+            <li><a href="catalog.html" class="active">Our Catalog</a></li>
          </ul>
 
          <div class="nav-right">
@@ -31,17 +31,13 @@
 
    <main>
     <div class="clothing-rows">
-        <div class="tops" id="tops">
-            <h2>Tops</h2>
-            <section id="top-items" class="item-container"></section>
+        <div class="tops">
+            <h2>Un-Owned</h2>
+            <section id="unowned" class="item-container"></section>
         </div>
-        <div class="bottoms" id="bottoms">
-            <h2>Bottoms</h2>
-            <section id="bottom-items" class="item-container"></section>
-        </div>
-        <div class="footwear" id="footwear">
-            <h2>Footwear</h2>
-            <section id="footwear-items" class="item-container"></section>
+        <div class="bottoms">
+            <h2>Owned</h2>
+            <section id="owned" class="item-container"></section>
         </div>
     </div>
    </main>

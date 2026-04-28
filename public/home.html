@@ -30,7 +30,8 @@
       <nav>
          <ul>
             <li><a href="home.html" class="active">Home</a></li>
-            <li><a href="wardrobe.html">Wardrobe</a></li>
+            <li><a href="wardrobe.html">Your Wardrobe</a></li>
+            <li><a href="catalog.html">Our Catalog</a></li>
          </ul>
 
          <div class="nav-right">
@@ -40,36 +41,6 @@
    </header>
 
      <main>
-
-      <div class="sidebar" id="sidebar">
-         <button class="sidebar-toggle" id="sidebarToggle"><img src="images/menuicon.png"></button>
-         <div class="filter-section">
-             <h4>Clothing Type</h4>
-             <label><input type="checkbox" name="itemFilter" value="shirts"> Shirts</label>
-             <label><input type="checkbox" name="itemFilter" value="jackets"> Jackets</label>
-             <label><input type="checkbox" name="itemFilter" value="pants"> Pants</label>
-             <label><input type="checkbox" name="itemFilter" value="shorts"> Shorts</label>
-             <label><input type="checkbox" name="itemFilter" value="hoodies"> Hoodies</label>
-             <label><input type="checkbox" name="itemFilter" value="sweaters"> Sweaters</label>
-             <label><input type="checkbox" name="itemFilter" value="shoes"> Shoes</label>
-         </div>
-     
-         <div class="filter-section">
-             <h4>Season</h4>
-             <label><input type="checkbox" name="itemFilter" value="spring"> Spring</label>
-             <label><input type="checkbox" name="itemFilter" value="summer"> Summer</label>
-             <label><input type="checkbox" name="itemFilter" value="autumn"> Autumn</label>
-             <label><input type="checkbox" name="itemFilter" value="winter"> Winter</label>
-         </div>
-     
-         <div class="filter-section">
-             <h4>Style</h4>
-             <label><input type="checkbox" name="itemFilter" value="casual"> Casual</label>
-             <label><input type="checkbox" name="itemFilter" value="business casual"> Business Casual</label>
-             <label><input type="checkbox" name="itemFilter" value="formal"> Formal</label>
-             <label><input type="checkbox" name="itemFilter" value="sportwear"> Sportwear</label>
-         </div>
-     </div>
 
      <section id="outfit-generator">
       <div class="clothing-container">
@@ -123,6 +94,38 @@
       </div>
     </section>
      </main>
+
+     <aside>
+      <div class="sidebar" id="sidebar">
+          <button class="sidebar-toggle" id="sidebarToggle"><img src="images/menuicon.png"></button>
+          <div class="filter-section">
+              <h4>Clothing Type</h4>
+              <label><input type="checkbox" name="itemFilter" value="shirts"> Shirts</label>
+              <label><input type="checkbox" name="itemFilter" value="jackets"> Jackets</label>
+              <label><input type="checkbox" name="itemFilter" value="pants"> Pants</label>
+              <label><input type="checkbox" name="itemFilter" value="shorts"> Shorts</label>
+              <label><input type="checkbox" name="itemFilter" value="hoodies"> Hoodies</label>
+              <label><input type="checkbox" name="itemFilter" value="sweaters"> Sweaters</label>
+              <label><input type="checkbox" name="itemFilter" value="shoes"> Shoes</label>
+          </div>
+      
+          <div class="filter-section">
+              <h4>Season</h4>
+              <label><input type="checkbox" name="itemFilter" value="spring"> Spring</label>
+              <label><input type="checkbox" name="itemFilter" value="summer"> Summer</label>
+              <label><input type="checkbox" name="itemFilter" value="autumn"> Autumn</label>
+              <label><input type="checkbox" name="itemFilter" value="winter"> Winter</label>
+          </div>
+      
+          <div class="filter-section">
+              <h4>Style</h4>
+              <label><input type="checkbox" name="itemFilter" value="casual"> Casual</label>
+              <label><input type="checkbox" name="itemFilter" value="business casual"> Business Casual</label>
+              <label><input type="checkbox" name="itemFilter" value="formal"> Formal</label>
+              <label><input type="checkbox" name="itemFilter" value="sportwear"> Sportwear</label>
+          </div>
+      </div>
+     </aside>
 
 
      <script src="JS/sidebar.js"></script>

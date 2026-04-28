@@ -38,10 +38,20 @@ class App{
 
     //this method fetches the clothes from the json and pushes them to there correct array
     async queryClothes(){
-        const response = await fetch("./Data/clothes.json");
-        const data = await response.json();
-        for(const dataObject of data){
-
+        // fetch user
+        const userResponse = await fetch("./Data/credentials.json");
+        const userData = await userResponse.json();
+        const alexis = userData.find(user => user.email === "ac@ac.com");
+        const userWardrobeIds = alexis.wardrobe;
+    
+        // fetch full catalog
+        const clothesResponse = await fetch("./Data/clothes.json");
+        const clothesData = await clothesResponse.json();
+    
+        // only keep items whose id is in the user's wardrobe
+        const ownedItems = clothesData.filter(item => userWardrobeIds.includes(item.id));
+    
+        for(const dataObject of ownedItems){
             if (dataObject.category === "tops") {
                 this.topImages.push(dataObject);
                 this.allTopImages.push(dataObject);
@@ -53,7 +63,6 @@ class App{
             if (dataObject.category === "footwear") {
                 this.footwearImages.push(dataObject);
                 this.allFootwearImages.push(dataObject);
-
             }
         }
         this.createClothingItem();

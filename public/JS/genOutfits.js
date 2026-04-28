@@ -81,7 +81,7 @@ class App{
     // Gen Oufit
     randomOutfit() {
         if (!this.topImages?.length || !this.bottomImages?.length || !this.footwearImages?.length) {
-            console.warn("Missing images to generate an outfit.");
+            alert("Unable to make a full outfit. Make sure filter selections have a possible option in each slot");
             return;
         }
     
@@ -158,7 +158,9 @@ class App{
             return this.filterMatch(item, checkbox_values);
         });
 
-        this.randomOutfit();
+        if (this.topImages.length > 0 && this.bottomImages.length > 0 && this.footwearImages.length > 0) {
+            this.randomOutfit();
+        }
     }
 
     filterMatch(item, filters) {

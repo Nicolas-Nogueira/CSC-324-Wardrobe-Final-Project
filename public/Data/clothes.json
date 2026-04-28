@@ -1,5 +1,6 @@
 [
   {
+    "id": "01",
     "name": "Arsenal Grey Hoodie",
     "clothLink": "images/arsHood.jpeg",
     "category": "tops",
@@ -15,6 +16,7 @@
     ]
   },
   {
+    "id": "02",
     "name": "Arsenal Black Sweater",
     "clothLink": "images/arsSweat.jpeg",
     "category": "tops",
@@ -30,6 +32,7 @@
     ]
   },
   {
+    "id": "03",
     "name": "Nike Black Shorts",
     "clothLink": "images/blackShort.jpeg",
     "category": "bottoms",
@@ -43,6 +46,7 @@
     ]
   },
   {
+    "id": "04",
     "name": "Black Arsenal Away Shirt",
     "clothLink": "images/blackT.jpeg",
     "category": "tops",
@@ -57,6 +61,7 @@
     ]
   },
   {
+    "id": "05",
     "name": "Black Cargos",
     "clothLink": "images/cargo.jpeg",
     "category": "bottoms",
@@ -71,6 +76,7 @@
     ]
   },
   {
+    "id": "06",
     "name": "Blue Suit Jacket",
     "clothLink": "images/jacket.jpeg",
     "category": "tops",
@@ -84,6 +90,7 @@
     ]
   },
   {
+    "id": "07",
     "name": "Blue Jeans",
     "clothLink": "images/jeans.jpeg",
     "category": "bottoms",
@@ -99,6 +106,7 @@
     ]
   },
   {
+    "id": "08",
     "name": "Khakis",
     "clothLink": "images/khaki.jpeg",
     "category": "bottoms",
@@ -114,6 +122,7 @@
     ]
   },
   {
+    "id": "09",
     "name": "Purple Tennis Shorts",
     "clothLink": "images/purpShort.jpeg",
     "category": "bottoms",
@@ -127,6 +136,7 @@
     ]
   },
   {
+    "id": "10",
     "name": "Red Dunks",
     "clothLink": "images/redShoes.jpeg",
     "category": "footwear",
@@ -142,6 +152,7 @@
     ]
   },
   {
+    "id": "11",
     "name": "Red Arsenal Home Shirt",
     "clothLink": "images/redT.jpeg",
     "category": "tops",
@@ -156,6 +167,7 @@
     ]
   },
   {
+    "id": "12",
     "name": "Adidas Slides",
     "clothLink": "images/slides.jpeg",
     "category": "footwear",
@@ -168,6 +180,7 @@
     ]
   },
   {
+    "id": "13",
     "name": "White Tennis Shoes",
     "clothLink": "images/tennisShoes.jpeg",
     "category": "footwear",
@@ -183,6 +196,7 @@
     ]
   },
   {
+    "id": "14",
     "name": "White Dress Shirt",
     "clothLink": "images/whiteShirt.jpeg",
     "category": "tops",
@@ -198,6 +212,7 @@
     ]
   },
   {
+    "id": "15",
     "name": "Blue Jeans 2",
     "clothLink": "images/Blue_Jeans.jpg",
     "category": "bottoms",
@@ -213,6 +228,7 @@
     ]
   },
   {
+    "id": "16",
     "name": "Blue Graphic Hoodie",
     "clothLink": "images/Blue_graphic_hoodie.jpg",
     "category": "tops",
@@ -228,6 +244,7 @@
     ]
   },
   {
+    "id": "17",
     "name": "Blue and White Striped Button-Up",
     "clothLink": "images/Blue_with_white_stripes_button_up.jpg",
     "category": "tops",
@@ -245,6 +262,7 @@
     ]
   },
   {
+    "id": "18",
     "name": "Navy Blue Puffer Jacket",
     "clothLink": "images/bule_puffer.jpg",
     "category": "tops",
@@ -258,6 +276,7 @@
     ]
   },
   {
+    "id": "19",
     "name": "Graphic Workout Shirt",
     "clothLink": "images/graphic_workout_shirt.jpg",
     "category": "tops",
@@ -271,6 +290,7 @@
     ]
   },
   {
+    "id": "20",
     "name": "Grey Sweat Shorts",
     "clothLink": "images/grey_sweat_shorts.jpg",
     "category": "bottoms",
@@ -284,6 +304,7 @@
     ]
   },
   {
+    "id": "21",
     "name": "Ice Cube Graphic Tee",
     "clothLink": "images/Ice_cube_graphic_tee.jpg",
     "category": "tops",
@@ -297,6 +318,7 @@
     ]
   },
   {
+    "id": "22",
     "name": "Navy Blue Sweatpants",
     "clothLink": "images/Navy_Blue_Sweatpants.jpg",
     "category": "bottoms",
@@ -312,6 +334,7 @@
     ]
   },
   {
+    "id": "23",
     "name": "Purple Gap Shirt",
     "clothLink": "images/Purple_Gap_shirt.jpg",
     "category": "tops",
@@ -325,6 +348,7 @@
     ]
   },
   {
+    "id": "24",
     "name": "Soccer Shorts",
     "clothLink": "images/soccer_shorts.jpg",
     "category": "bottoms",
@@ -338,6 +362,7 @@
     ]
   },
   {
+    "id": "25",
     "name": "White Flip Flops",
     "clothLink": "images/white_flip_flops.jpg",
     "category": "footwear",
@@ -350,6 +375,7 @@
     ]
   },
   {
+    "id": "26",
     "name": "White Graphic Winter Jacket",
     "clothLink": "images/white_graphic_whinter_jacket_.jpg",
     "category": "tops",
