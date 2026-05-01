@@ -41,35 +41,17 @@ class App {
         });
     }
 
-    filterItems(){
-        const checkboxes = Array.from(document.querySelectorAll('[name="itemFilter"]:checked')); // copied from HW3 selects all checkboxes with that name and that are checked
-
+    filterItems() {
+        const checkboxes = Array.from(document.querySelectorAll('[name="itemFilter"]:checked'));
         const checkbox_values = checkboxes.map(checkbox => checkbox.value);
-
-        if(checkbox_values.length === 0){
-            this.topImages = this.allTopImages;
-            this.bottomImages = this.allBottomImages;
-            this.footwearImages = this.allFootwearImages;
-            this.createClothingItem();
+    
+        if (checkbox_values.length === 0) {
+            this.renderItems(this.allItems);
             return;
         }
-
-        // handles the 3 sections separately checks if any of the items in each array have any of the checkboxes that are checked
-        // stores the ones that do from the all into the smaller sections
-        // helper function filterMatch to deal with checkbox value checking
-        this.topImages = this.allTopImages.filter(item => {
-            return this.filterMatch(item, checkbox_values);
-        });
-        
-        this.bottomImages = this.allBottomImages.filter(item => {
-            return this.filterMatch(item, checkbox_values);
-        });
-        
-        this.footwearImages = this.allFootwearImages.filter(item => {
-            return this.filterMatch(item, checkbox_values);
-        });
-
-        this.createClothingItem();
+    
+        const filteredItems = this.allItems.filter(item => this.filterMatch(item, checkbox_values));
+        this.renderItems(filteredItems);
     }
 
     filterMatch(item, filters) {
@@ -89,7 +71,7 @@ class App {
         return false;
     }
 
-    toggleItem(itemId) {
+    async toggleItem(itemId) {
         if (this.userWardrobe.includes(itemId)) {
             // remove it
             this.userWardrobe = this.userWardrobe.filter(id => id !== itemId);
@@ -97,7 +79,19 @@ class App {
             // add it
             this.userWardrobe.push(itemId);
         }
-        this.renderItems(this.allItems);
+
+        const obj = {
+            username: "AlexisC",
+            wardrobe: this.userWardrobe
+        }
+
+        await fetch('/save-wardrobe', {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(obj)
+        });
+
+        this.filterItems();
     }
 }
 

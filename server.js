@@ -64,6 +64,18 @@ app.get('/user', function(req, res){
 
 });
 
+app.post('/save-wardrobe', function(req, res) {
+    const raw = fs.readFileSync('./Data/credentials.json', 'utf-8');
+    const data = JSON.parse(raw);                              
+
+    data[req.body.username].wardrobe = req.body.wardrobe;
+
+    fs.writeFile('./Data/credentials.json', JSON.stringify(data, null, 2), 'utf-8', function(err) {
+        if (err) console.log(err);
+        else console.log("Data written successfully");
+    });
+});
+
 app.listen(3000, function(err){
     if(err) console.log(err);
     else console.log('Server listening on port 3000');

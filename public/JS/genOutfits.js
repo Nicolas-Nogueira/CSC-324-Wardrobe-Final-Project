@@ -3,6 +3,7 @@ class App{
         this.topImages = [];
         this.bottomImages = [];
         this.footwearImages = [];
+        this.userWardrobe = [];
 
         /* made an original copy to separate the query and creation logic as it made filtering easier */
         this.allTopImages = [];
@@ -25,14 +26,20 @@ class App{
         this.filter.addEventListener('change',this.filterItems.bind(this));
 
         // Top arrows
+        const rightArrowTop = document.querySelector('#top-slot .arrow-btn-right-arrow');
+        const leftArrowTop = document.querySelector('#top-slot .arrow-btn-left-arrow');
         rightArrowTop.addEventListener('click', () => this.next('top'));
         leftArrowTop.addEventListener('click',  () => this.previous('top'));
 
         // Bottom arrows
+        const rightArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-right-arrow');
+        const leftArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-left-arrow');
         rightArrowBottom.addEventListener('click', () => this.next('bottom'));
         leftArrowBottom.addEventListener('click',  () => this.previous('bottom'));
 
         // Shoes arrows
+        const rightArrowShoes = document.querySelector('#shoes-slot .arrow-btn-right-arrow');
+        const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
         rightArrowShoes.addEventListener('click', () => this.next('shoes'));
         leftArrowShoes.addEventListener('click',  () => this.previous('shoes'));
 
@@ -105,17 +112,16 @@ class App{
     async queryClothes(){
 
         // fetch user
-        const userResponse = await fetch("./Data/credentials.json");
+        const userResponse = await fetch("./user");
         const userData = await userResponse.json();
-        const alexis = userData.find(user => user.email === "ac@ac.com");
-        const userWardrobeIds = alexis.wardrobe;
+        this.userWardrobe = userData.wardrobe;
 
         // Fetch clothes data
-        const clothesResponse = await fetch("./Data/clothes.json");
+        const clothesResponse = await fetch("./ClothingData/clothes.json");
         const clothesData = await clothesResponse.json();
 
         // only keep items whose id is in the user's wardrobe
-       const ownedItems = clothesData.filter(item => userWardrobeIds.includes(item.id));
+       const ownedItems = clothesData.filter(item => this.userWardrobe.includes(item.id));
 
         //change dataObject to userwardrobe 
         for(const dataObject of ownedItems){
