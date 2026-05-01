@@ -39,13 +39,12 @@ class App{
     //this method fetches the clothes from the json and pushes them to there correct array
     async queryClothes(){
         // fetch user
-        const userResponse = await fetch("./Data/credentials.json");
+        const userResponse = await fetch("./user");
         const userData = await userResponse.json();
-        const alexis = userData.find(user => user.email === "ac@ac.com");
-        const userWardrobeIds = alexis.wardrobe;
+        const userWardrobeIds = userData.wardrobe;
     
         // fetch full catalog
-        const clothesResponse = await fetch("./Data/clothes.json");
+        const clothesResponse = await fetch("./ClothingData/clothes.json");
         const clothesData = await clothesResponse.json();
     
         // only keep items whose id is in the user's wardrobe

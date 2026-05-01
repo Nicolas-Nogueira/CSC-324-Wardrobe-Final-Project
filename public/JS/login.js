@@ -8,12 +8,12 @@ class App{
 
         this.addActiveTag();
 
-        this.lEmail = document.querySelector("#login-email");
+        this.lUser = document.querySelector("#login-username");
         this.lPassW = document.querySelector("#login-password");
         this.lErrorM = document.querySelector("#login-error-message");
         this.login = this.login.bind(this)
 
-        this.rEmail = document.querySelector("#register-email");
+        this.rUser = document.querySelector("#register-username");
         this.rPassW = document.querySelector("#register-password");
         this.rErrorM = document.querySelector("#register-error-message");
         this.register = this.register.bind(this)
@@ -35,38 +35,67 @@ class App{
 
     async login(event){
         event.preventDefault();
-        const email = this.lEmail.value;
+        const username = this.lUser.value;
         const password = this.lPassW.value;
 
-        const response = await fetch("./Data/credentials.json");
-        const data = await response.json();
-
-        for(const cred of data){
-            if(email === cred.email && password === cred.password){
-                console.log("here");
-                window.location.href = "home.html";
-                return;
-            }
+        const credentials = {
+            username: username,
+            password: password
         }
-        console.log("here");
-        this.lErrorM.classList.remove("hidden");
+
+        // send the credentials to the server and await the response 
+        const response = await fetch('/login', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(credentials)
+        });
+
+        // await the body of the response
+        const auth = await response.json();
+
+        // if the server responded with { success: true, message: "..." }, then the new user was created
+        if (auth.success){
+            window.location.href = 'home.html'; // update the page to account.html
+        }
+        else { // otherwise
+            this.showError(auth.message, this.lErrorM); // show the error message div with the message received from the server
+        }
     }
 
     async register(event){
         event.preventDefault();
-        const email = this.rEmail.value;
         const password = this.rPassW.value;
+        const username = this.rUser.value;
 
-        const response = await fetch("./data/credentials.json");
-        const data = await response.json();
+        const credentials = {
+            "username": username,
+            "password": password,
+            "wardrobe": []
+        };
 
-        for(const cred of data){
-            if(email === cred.email){
-                this.rErrorM.classList.remove("hidden");
-                return;
-            }
+        const response = await fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(credentials)
+        })
+
+        const auth = await response.json();
+
+        if (auth.success){
+            alert("Registration successful. Please login.");
         }
-        alert("Account created successfully! Please login to continue.");
+        else { // otherwise
+            this.showError(auth.message, this.rErrorM); // show the error message div with the message received from the server
+        }
+    }
+
+    showError(message, errorDiv){
+        errorDiv.textContent = message;
+        errorDiv.classList.remove('hidden');
     }
 }
 

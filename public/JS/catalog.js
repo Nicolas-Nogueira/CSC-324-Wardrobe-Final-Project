@@ -13,14 +13,13 @@ class App {
 
     async queryClothes() {
         // fetch catalog
-        const catalogResponse = await fetch("./Data/clothes.json");
+        const catalogResponse = await fetch("./ClothingData/clothes.json");
         const catalogData = await catalogResponse.json();
 
         // fetch current user
-        const userResponse = await fetch("./Data/credentials.json");
+        const userResponse = await fetch("./user");
         const userData = await userResponse.json();
-        const alexis = userData.find(user => user.email === "ac@ac.com");
-        this.userWardrobe = alexis.wardrobe;
+        this.userWardrobe = userData.wardrobe;
 
         this.allItems = catalogData;
         this.renderItems(this.allItems);

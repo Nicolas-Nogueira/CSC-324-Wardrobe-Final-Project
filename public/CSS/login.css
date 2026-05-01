@@ -35,11 +35,6 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden; /* hides sliding forms when they move */
-    transition: height 0.2s ease; /* smooth height change when switching forms */
-}
-
-.login-page-wrapper.active {
-    height: 520px; /* expands to fit register form */
 }
 
 .login-page-wrapper .form-box {
