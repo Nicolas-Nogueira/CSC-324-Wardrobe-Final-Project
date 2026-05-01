@@ -48,49 +48,50 @@
       <div class="clothing-container">
 
          <button id="generate-outfit-btn" type="button" >Generate Outfit</button>
-    
+        
+        <!-- ARIA LABELS source: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/button_role-->
         <!-- TOP SLOT -->
         <div class="clothing-windows" id="top-slot">
-          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+          <button class="arrow-btn-left-arrow" aria-label="Previous top item">&#8592;</button>
     
           <figure class="clothing-display">
             <!-- main clothing image -->
             <img id ="top-image" src="images/arsHood.jpeg" alt="top-image">
             <!-- lock button inside the box -->
-            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock button for top">
               <img src="images/unlocked.png" alt="">
             </button>
           </figure>
     
-          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+          <button class="arrow-btn-right-arrow" aria-label="Next top item">&#8594;</button>
         </div>
     
         <!-- BOTTOMS SLOT -->
         <div class="clothing-windows" id="bottoms-slot">
-          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+          <button class="arrow-btn-left-arrow" aria-label="Previous bottoms item">&#8592;</button>
     
           <figure class="clothing-display">
             <img id = "bottom-image" src="images/blackShort.jpeg" alt="bottom-image">
-            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock button for bottoms">
               <img src="images/unlocked.png" alt="">
             </button>
           </figure>
     
-          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+          <button class="arrow-btn-right-arrow" aria-label="Next bottoms item">&#8594;</button>
         </div>
     
         <!-- SHOES SLOT -->
         <div class="clothing-windows" id="shoes-slot">
-          <button class="arrow-btn-left-arrow" aria-label="Previous item">&#8592;</button>
+          <button class="arrow-btn-left-arrow" aria-label="Previous footwear item">&#8592;</button>
     
           <figure class="clothing-display">
             <img id = "shoes-image" src="images/redShoes.jpeg" alt="shoes-image">
-            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock this item">
+            <button class="icon-btn lock-btn" aria-pressed="false" aria-label="Lock button for footwear">
               <img src="images/unlocked.png" alt="">
             </button>
           </figure>
     
-          <button class="arrow-btn-right-arrow" aria-label="Next item">&#8594;</button>
+          <button class="arrow-btn-right-arrow" aria-label="Next footwear item">&#8594;</button>
         </div>
     
       </div>
