@@ -25,22 +25,16 @@ class App{
         this.filter.addEventListener('change',this.filterItems.bind(this));
 
         // Top arrows
-        const rightArrowTop = document.querySelector('#top-slot .arrow-btn-right-arrow');
-        const leftArrowTop = document.querySelector('#top-slot .arrow-btn-left-arrow');
-        rightArrowTop.addEventListener('click', this.nextTop.bind(this));
-        leftArrowTop.addEventListener('click', this.previousTop.bind(this));
- 
+        rightArrowTop.addEventListener('click', () => this.next('top'));
+        leftArrowTop.addEventListener('click',  () => this.previous('top'));
+
         // Bottom arrows
-        const rightArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-right-arrow');
-        const leftArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-left-arrow');
-        rightArrowBottom.addEventListener('click', this.nextBottom.bind(this));
-        leftArrowBottom.addEventListener('click', this.previousBottom.bind(this));
- 
+        rightArrowBottom.addEventListener('click', () => this.next('bottom'));
+        leftArrowBottom.addEventListener('click',  () => this.previous('bottom'));
+
         // Shoes arrows
-        const rightArrowShoes = document.querySelector('#shoes-slot .arrow-btn-right-arrow');
-        const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
-        rightArrowShoes.addEventListener('click', this.nextShoes.bind(this));
-        leftArrowShoes.addEventListener('click', this.previousShoes.bind(this));
+        rightArrowShoes.addEventListener('click', () => this.next('shoes'));
+        leftArrowShoes.addEventListener('click',  () => this.previous('shoes'));
 
         //Lock bottom
         const topLockBtn = document.querySelector('#top-slot .lock-btn');
@@ -237,72 +231,34 @@ class App{
             ...item.season
         ];
     }
-
-    // Top arrows method 
-    nextTop() {
-        if (this.topLocked) return;
-
-        if (this.currentTopIndex < this.topImages.length - 1) {
-            this.currentTopIndex++;
-        } else {
-            this.currentTopIndex = 0;
-        }
+    
+    //https://claude.ai/chat/35c144b4-957f-45b7-ae52-0c2f71075c7a
+    //arrows method 
+    next(category) {
+        const configs = {
+            top:    { locked: this.topLocked,    images: this.topImages,      indexKey: 'currentTopIndex' },
+            bottom: { locked: this.bottomLocked, images: this.bottomImages,   indexKey: 'currentBottomIndex' },
+            shoes:  { locked: this.shoesLocked,  images: this.footwearImages, indexKey: 'currentShoesIndex' }
+        };
+    
+        const { locked, images, indexKey } = configs[category];
+        if (locked) return;
+    
+        this[indexKey] = this[indexKey] < images.length - 1 ? this[indexKey] + 1 : 0;
         this.displayOutfit();
     }
     
-    previousTop() {
-        if (this.topLocked) return;
-
-        if (this.currentTopIndex > 0) {
-            this.currentTopIndex--;
-        } else {
-            this.currentTopIndex = this.topImages.length - 1;
-        }
-        this.displayOutfit();
-    }
-
-    // Bottom arrow methods 
-    nextBottom() {
-        if (this.bottomLocked) return;
-        if (this.currentBottomIndex < this.bottomImages.length - 1) {
-            this.currentBottomIndex++;
-        } else {
-            this.currentBottomIndex = 0;
-        }
-        this.displayOutfit();
-    }
+    previous(category) {
+        const configs = {
+            top:    { locked: this.topLocked,    images: this.topImages,      indexKey: 'currentTopIndex' },
+            bottom: { locked: this.bottomLocked, images: this.bottomImages,   indexKey: 'currentBottomIndex' },
+            shoes:  { locked: this.shoesLocked,  images: this.footwearImages, indexKey: 'currentShoesIndex' }
+        };
     
-    previousBottom() {
-        if (this.bottomLocked) return;
-
-        if (this.currentBottomIndex > 0) {
-            this.currentBottomIndex--;
-        } else {
-            this.currentBottomIndex = this.bottomImages.length - 1;
-        }
-        this.displayOutfit();
-    }
-
-    // Shoes arrow methods 
-    nextShoes() {
-        if (this.shoesLocked) return;
-
-        if (this.currentShoesIndex < this.footwearImages.length - 1) {
-            this.currentShoesIndex++;
-        } else {
-            this.currentShoesIndex = 0;
-        }
-        this.displayOutfit();
-    }
+        const { locked, images, indexKey } = configs[category];
+        if (locked) return;
     
-    previousShoes() {
-        if (this.shoesLocked) return;
-
-        if (this.currentShoesIndex > 0) {
-            this.currentShoesIndex--;
-        } else {
-            this.currentShoesIndex = this.footwearImages.length - 1;
-        }
+        this[indexKey] = this[indexKey] > 0 ? this[indexKey] - 1 : images.length - 1;
         this.displayOutfit();
     }
 }
