@@ -13,10 +13,14 @@ class App{
         this.allBottomImages = [];
         this.allFootwearImages = [];
 
-        this.queryClothes();
+        this.init();
 
         this.filter = document.querySelector('#sidebar');
         this.filter.addEventListener('change',this.filterItems.bind(this));
+    }
+
+    async init() {
+        await this.queryClothes();
     }
 
     // This method maps each image to its corresponding clothing row and creates a new card for every item added.

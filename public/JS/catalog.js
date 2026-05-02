@@ -22,7 +22,7 @@ class App {
         this.userWardrobe = userData.wardrobe;
 
         this.allItems = catalogData;
-        this.renderItems(this.allItems);
+        this.filterItems();
     }
 
     renderItems(items) {
@@ -85,7 +85,7 @@ class App {
             wardrobe: this.userWardrobe
         }
 
-        await fetch('/save-wardrobe', {
+        const response = await fetch('/save-wardrobe', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(obj)
