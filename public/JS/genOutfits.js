@@ -1,5 +1,5 @@
-class App{
-    constructor(){
+class App{ // main class that handles the outfit generation logic and user interactions
+    constructor(){ // containers for the images to be displayed and arrays to hold the clothing items
         this.topImages = [];
         this.bottomImages = [];
         this.footwearImages = [];
@@ -23,54 +23,54 @@ class App{
         this.queryClothes();
 
         this.filter = document.querySelector('#sidebar');
-        this.filter.addEventListener('change',this.filterItems.bind(this));
+        this.filter.addEventListener('change',this.filterItems.bind(this)); // re-render items when filter changes
 
         // Top arrows
         const rightArrowTop = document.querySelector('#top-slot .arrow-btn-right-arrow');
         const leftArrowTop = document.querySelector('#top-slot .arrow-btn-left-arrow');
-        rightArrowTop.addEventListener('click', () => this.next('top'));
-        leftArrowTop.addEventListener('click',  () => this.previous('top'));
+        rightArrowTop.addEventListener('click', () => this.next('top')); // when right arrow for tops is clicked, go to next top
+        leftArrowTop.addEventListener('click',  () => this.previous('top')); // when left arrow for tops is clicked, go to previous top
 
         // Bottom arrows
         const rightArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-right-arrow');
         const leftArrowBottom = document.querySelector('#bottoms-slot .arrow-btn-left-arrow');
-        rightArrowBottom.addEventListener('click', () => this.next('bottom'));
-        leftArrowBottom.addEventListener('click',  () => this.previous('bottom'));
+        rightArrowBottom.addEventListener('click', () => this.next('bottom')); // when right arrow for bottoms is clicked, go to next bottom
+        leftArrowBottom.addEventListener('click',  () => this.previous('bottom')); // when left arrow for bottoms is clicked, go to previous bottom
 
         // Shoes arrows
         const rightArrowShoes = document.querySelector('#shoes-slot .arrow-btn-right-arrow');
         const leftArrowShoes = document.querySelector('#shoes-slot .arrow-btn-left-arrow');
-        rightArrowShoes.addEventListener('click', () => this.next('shoes'));
-        leftArrowShoes.addEventListener('click',  () => this.previous('shoes'));
+        rightArrowShoes.addEventListener('click', () => this.next('shoes')); // when right arrow for shoes is clicked, go to next shoes
+        leftArrowShoes.addEventListener('click',  () => this.previous('shoes')); // when left arrow for shoes is clicked, go to previous shoes
 
         //Lock bottom
         const topLockBtn = document.querySelector('#top-slot .lock-btn');
         const bottomLockBtn = document.querySelector('#bottoms-slot .lock-btn');
         const shoesLockBtn = document.querySelector('#shoes-slot .lock-btn');
 
-        topLockBtn.addEventListener('click', () => this.toggleLock('top'));
-        bottomLockBtn.addEventListener('click', () => this.toggleLock('bottoms'));
-        shoesLockBtn.addEventListener('click', () => this.toggleLock('shoes'));
+        topLockBtn.addEventListener('click', () => this.toggleLock('top')); // when lock button for tops is clicked, toggle lock for tops
+        bottomLockBtn.addEventListener('click', () => this.toggleLock('bottoms'));  // when lock button for bottoms is clicked, toggle lock for bottoms
+        shoesLockBtn.addEventListener('click', () => this.toggleLock('shoes')); // when lock button for shoes is clicked, toggle lock for shoes
     }
 
-    toggleLock(slot) {
+    toggleLock(slot) { // toggles the lock state for the given slot and updates the lock button image and aria-pressed attribute accordingly
         let lockBtn;
         
         // Determine which slot and get its button
         if (slot === 'top') {
-            this.topLocked = !this.topLocked;
+            this.topLocked = !this.topLocked; // toggle the lock state for tops
             lockBtn = document.querySelector('#top-slot .lock-btn');
         } else if (slot === 'bottoms') {
-            this.bottomLocked = !this.bottomLocked;
-            lockBtn = document.querySelector('#bottoms-slot .lock-btn');
+            this.bottomLocked = !this.bottomLocked; // toggle the lock state for bottoms
+            lockBtn = document.querySelector('#bottoms-slot .lock-btn'); 
         } else if (slot === 'shoes') {
-            this.shoesLocked = !this.shoesLocked;
+            this.shoesLocked = !this.shoesLocked; // toggle the lock state for shoes
             lockBtn = document.querySelector('#shoes-slot .lock-btn');
         }
         
         // Update the lock button image and aria-pressed
         const img = lockBtn.querySelector('img');
-        if (slot === 'top' ? this.topLocked : slot === 'bottoms' ? this.bottomLocked : this.shoesLocked) {
+        if (slot === 'top' ? this.topLocked : slot === 'bottoms' ? this.bottomLocked : this.shoesLocked) { 
             img.src = 'images/locked.png';
             lockBtn.setAttribute('aria-pressed', 'true');
         } else {
