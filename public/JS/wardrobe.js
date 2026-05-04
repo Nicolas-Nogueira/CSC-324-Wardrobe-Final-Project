@@ -1,5 +1,5 @@
 
-class App{
+class App{ // This class handles all of the logic for the wardrobe page, including fetching the user's wardrobe from the server, creating the clothing item cards, and filtering the items based on the selected checkboxes
     constructor(){
         this.topContainer = document.querySelector("#top-items");
         this.bottomContainer = document.querySelector("#bottom-items");
@@ -16,28 +16,28 @@ class App{
         this.init();
 
         this.filter = document.querySelector('#sidebar');
-        this.filter.addEventListener('change',this.filterItems.bind(this));
+        this.filter.addEventListener('change',this.filterItems.bind(this)); // adds an event listener to the sidebar to listen for changes to the checkboxes and call the filterItems method to update the displayed items based on which checkboxes are checked
     }
 
-    async init() {
+    async init() { // this method initializes the page by querying the user's wardrobe from the server and creating the clothing item cards
         await this.queryClothes();
     }
 
     // This method maps each image to its corresponding clothing row and creates a new card for every item added.
     // It then appends each element to the container it relates to
     createClothingItem(){
-        this.topContainer.innerHTML = '';
-        this.bottomContainer.innerHTML = '';
-        this.footwearContainer.innerHTML = '';
+        this.topContainer.innerHTML = ''; // clear the containers before appending new elements to avoid duplicates when filtering
+        this.bottomContainer.innerHTML = ''; // clear the containers before appending new elements to avoid duplicates when filtering
+        this.footwearContainer.innerHTML = ''; // clear the containers before appending new elements to avoid duplicates when filtering
 
-        const itemsMappedTop = this.topImages.map(image => new CreateCard(image).element);
-        itemsMappedTop.forEach(el => this.topContainer.appendChild(el));
+        const itemsMappedTop = this.topImages.map(image => new CreateCard(image).element); // map each image in the topImages array to a new CreateCard element and store the resulting elements in an array
+        itemsMappedTop.forEach(el => this.topContainer.appendChild(el)); // for each element in the itemsMappedTop array, append it to the topContainer in the HTML to display it on the page
     
-        const itemsMappedBottom = this.bottomImages.map(image => new CreateCard(image).element);
-        itemsMappedBottom.forEach(el => this.bottomContainer.appendChild(el));
+        const itemsMappedBottom = this.bottomImages.map(image => new CreateCard(image).element); // map each image in the bottomImages array to a new CreateCard element and store the resulting elements in an array
+        itemsMappedBottom.forEach(el => this.bottomContainer.appendChild(el)); // for each element in the itemsMappedBottom array, append it to the bottomContainer in the HTML to display it on the page
     
-        const itemsMappedFootwear = this.footwearImages.map(image => new CreateCard(image).element);
-        itemsMappedFootwear.forEach(el => this.footwearContainer.appendChild(el));
+        const itemsMappedFootwear = this.footwearImages.map(image => new CreateCard(image).element); // map each image in the footwearImages array to a new CreateCard element and store the resulting elements in an array
+        itemsMappedFootwear.forEach(el => this.footwearContainer.appendChild(el)); // for each element in the itemsMappedFootwear array, append it to the footwearContainer in the HTML to display it on the page
     }
 
     //this method fetches the clothes from the json and pushes them to there correct array
@@ -54,7 +54,7 @@ class App{
         // only keep items whose id is in the user's wardrobe
         const ownedItems = clothesData.filter(item => userWardrobeIds.includes(item.id));
     
-        for(const dataObject of ownedItems){
+        for(const dataObject of ownedItems){ // for each clothing item in the user's wardrobe, push it to the appropriate category array based on its category, and also keep a copy of all items in separate arrays for filtering purposes
             if (dataObject.category === "tops") {
                 this.topImages.push(dataObject);
                 this.allTopImages.push(dataObject);
@@ -68,15 +68,15 @@ class App{
                 this.allFootwearImages.push(dataObject);
             }
         }
-        this.createClothingItem();
+        this.createClothingItem(); 
     }
 
-    filterItems(){
-        const checkboxes = Array.from(document.querySelectorAll('[name="itemFilter"]:checked')); // copied from HW3 selects all checkboxes with that name and that are checked
+    filterItems(){ // this method filters the displayed clothing items based on which checkboxes are checked in the sidebar, it checks which checkboxes are checked and then updates the topImages, bottomImages, and footwearImages arrays to only include items that match the selected filters, and then calls createClothingItem to update the displayed items on the page
+        const checkboxes = Array.from(document.querySelectorAll('[name="itemFilter"]:checked')); // copied from HW3. selects all checkboxes with that name and that are checked
 
-        const checkbox_values = checkboxes.map(checkbox => checkbox.value);
+        const checkbox_values = checkboxes.map(checkbox => checkbox.value); // creates an array of the values of the checked checkboxes to use for filtering
 
-        if(checkbox_values.length === 0){
+        if(checkbox_values.length === 0){ // if there are no checkboxes checked, then we want to show all items, so we set the topImages, bottomImages, and footwearImages arrays to be the same as the allTopImages, allBottomImages, and allFootwearImages arrays which contain all of the user's items, and then call createClothingItem to update the displayed items on the page
             this.topImages = this.allTopImages;
             this.bottomImages = this.allBottomImages;
             this.footwearImages = this.allFootwearImages;
@@ -102,7 +102,7 @@ class App{
         this.createClothingItem();
     }
 
-    filterMatch(item, filters) {
+    filterMatch(item, filters) { // this helper function checks if any of the filters match the clothing type, style, or season of the item, and returns true if there is a match and false if there is not
         // if the clothing type checkboxes match the clothing type of our item
         if (filters.includes(item.clothingType)) return true;
         
@@ -122,13 +122,13 @@ class App{
 
 // This class handles all of the html creation code 
 // It takes in an image and creates the container for it
-class CreateCard {
-    constructor(image) {
+class CreateCard { 
+    constructor(image) { // the constructor takes in an image object which contains the link to the clothing item and its name, and then calls the createClothCard method to create the HTML element for the clothing item card and stores it in this.element
         this.image = image;
         this.element = this.createClothCard();
     }
 
-    createClothCard() {
+    createClothCard() { // this method creates the HTML element for a clothing item card by creating a div with the class "item", creating an img element with the class "image" and setting its src and alt attributes to the link and name of the clothing item, appending the img element to the div, and then returning the div element
         const item = document.createElement("div");
         item.classList.add("item");
 

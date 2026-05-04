@@ -131,10 +131,9 @@ class App{ // main class that handles the outfit generation logic and user inter
         // only keep items whose id is in the user's wardrobe
        const ownedItems = clothesData.filter(item => this.userWardrobe.includes(item.id));
 
-        //change dataObject to userwardrobe 
-        for(const dataObject of ownedItems){
+        for(const dataObject of ownedItems){ // for each clothing item in the user's wardrobe, push it to the appropriate category array based on its category, and also keep a copy of all items in separate arrays for filtering purposes
 
-            if (dataObject.category === "tops") {
+            if (dataObject.category === "tops") { 
                 this.topImages.push(dataObject);
                 this.allTopImages.push(dataObject);
             }
