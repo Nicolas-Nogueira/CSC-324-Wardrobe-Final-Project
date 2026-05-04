@@ -79,23 +79,23 @@ class App{ // main class that handles the outfit generation logic and user inter
             isLocked = this.shoesLocked;
         }
 
-        if (isLocked) {
+        if (isLocked) { // if the slot is now locked, show the locked image and set aria-pressed to true
             img.src = 'images/locked.png';
-            lockBtn.setAttribute('aria-pressed', 'true');
+            lockBtn.setAttribute('aria-pressed', 'true'); // for accessibility, indicates that the button is in a pressed (locked) state
         } else {
             img.src = 'images/unlocked.png';
-            lockBtn.setAttribute('aria-pressed', 'false');
+            lockBtn.setAttribute('aria-pressed', 'false'); // for accessibility, indicates that the button is in an unpressed (unlocked) state
         }
     }
 
     // Gen Oufit
-    randomOutfit() {
-        if (!this.topImages?.length || !this.bottomImages?.length || !this.footwearImages?.length) {
+    randomOutfit() { // generates a random outfit by selecting random indices for tops, bottoms, and footwear, but only if they are not locked. If any category has no available items, it alerts the user.
+        if (!this.topImages.length || !this.bottomImages.length || !this.footwearImages.length) {
             alert("Unable to make a full outfit. Make sure filter selections have a possible option in each slot");
             return;
         }
     
-        // gen a random num from 0 to the lenght of the image array 
+        // gen a random num from 0 to the length of the image array 
         const randomTop = Math.floor(Math.random() * this.topImages.length);
         const randomBottom = Math.floor(Math.random() * this.bottomImages.length);
         const randomFootwear = Math.floor(Math.random() * this.footwearImages.length);
@@ -117,8 +117,7 @@ class App{ // main class that handles the outfit generation logic and user inter
         this.displayOutfit();
     }
 
-    //this method fetches the clothes from the json and pushes them to there correct array
-    async queryClothes(){
+    async queryClothes(){ //this method fetches the clothes from the json and pushes them to there correct array based on category, also fetches the user's wardrobe to determine which items they own and only pushes those to the arrays. Finally, it generates a random outfit to display on page load.
 
         // fetch user
         const userResponse = await fetch("./user");
@@ -152,12 +151,12 @@ class App{ // main class that handles the outfit generation logic and user inter
         this.randomOutfit();
     }
     
-    filterItems(){
+    filterItems(){ // filters the clothing items based on the selected checkboxes and updates the displayed outfit accordingly. If no filters are selected, it resets to show all items.
         const checkboxes = Array.from(document.querySelectorAll('[name="itemFilter"]:checked')); // copied from HW3 selects all checkboxes with that name and that are checked
 
-        const checkbox_values = checkboxes.map(checkbox => checkbox.value);
+        const checkbox_values = checkboxes.map(checkbox => checkbox.value); // creates an array of the values of the checked checkboxes, which represent the selected filters
 
-        if(checkbox_values.length === 0){
+        if(checkbox_values.length === 0){ // if no filters are selected, reset to show all items in each category
             this.topImages = this.allTopImages;
             this.bottomImages = this.allBottomImages;
             this.footwearImages = this.allFootwearImages;
@@ -185,7 +184,7 @@ class App{ // main class that handles the outfit generation logic and user inter
         }
     }
 
-    filterMatch(item, filters) {
+    filterMatch(item, filters) { // helper function that checks if an item matches any of the selected filters by checking the clothing type, style, and season against the selected filters
         // if the clothing type checkboxes match the clothing type of our item
         if (filters.includes(item.clothingType)) return true;
         
@@ -202,13 +201,12 @@ class App{ // main class that handles the outfit generation logic and user inter
         return false;
     }
 
-    // Unified display method with filter validation
-    displayOutfit() {
+    displayOutfit() { // Unified display method with filter validation
         const top = this.topImages[this.currentTopIndex];
         const bottom = this.bottomImages[this.currentBottomIndex];
         const shoes = this.footwearImages[this.currentShoesIndex];
         
-        if (this.outfitIsValid(top, bottom, shoes)) {
+        if (this.outfitIsValid(top, bottom, shoes)) { 
             // Display all three items
             this.updateImageElement("#top-image", top);
             this.updateImageElement("#bottom-image", bottom);
@@ -239,43 +237,44 @@ class App{ // main class that handles the outfit generation logic and user inter
     }
 
     // Extract all filters (clothing type, style, season) from an item
+    // spread operator was found from this link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax?
     getItemFilters(item) {
         return [
             item.clothingType,
-            ...item.style,
-            ...item.season
+            ...item.style, // spread operator to combine the style array into the main array
+            ...item.season // spread operator to combine the season array into the main array
         ];
     }
     
     //https://claude.ai/chat/35c144b4-957f-45b7-ae52-0c2f71075c7a
     //arrows method 
-    next(category) {
-        const configs = {
+    next(category) { // handles next button clicks for tops, bottoms, and shoes by checking if the category is locked and then updating the current index for that category accordingly, wrapping around to the beginning or end of the array as needed, and finally displaying the updated outfit
+        const configs = { // configuration object to avoid repeating code for each category
             top:    { locked: this.topLocked,    images: this.topImages,      indexKey: 'currentTopIndex' },
             bottom: { locked: this.bottomLocked, images: this.bottomImages,   indexKey: 'currentBottomIndex' },
             shoes:  { locked: this.shoesLocked,  images: this.footwearImages, indexKey: 'currentShoesIndex' }
         };
     
-        const { locked, images, indexKey } = configs[category];
-        if (locked) return;
+        const { locked, images, indexKey } = configs[category]; // this line uses destructuring to extract the relevant config for the given category (top, bottom, or shoes) from the configs object, making it easier to work with the locked state, images array, and index key for that category in the rest of the method 
+        if (locked) return; 
     
-        this[indexKey] = this[indexKey] < images.length - 1 ? this[indexKey] + 1 : 0;
+        this[indexKey] = this[indexKey] < images.length - 1 ? this[indexKey] + 1 : 0; // if not locked, update the current index for the category, wrapping around to the beginning if we go past the end
         this.displayOutfit();
     }
     
-    previous(category) {
-        const configs = {
+    previous(category) { // handles previous button clicks for tops, bottoms, and shoes by checking if the category is locked and then updating the current index for that category accordingly, wrapping around to the end or beginning of the array as needed, and finally displaying the updated outfit
+        const configs = { // configuration object to avoid repeating code for each category
             top:    { locked: this.topLocked,    images: this.topImages,      indexKey: 'currentTopIndex' },
             bottom: { locked: this.bottomLocked, images: this.bottomImages,   indexKey: 'currentBottomIndex' },
             shoes:  { locked: this.shoesLocked,  images: this.footwearImages, indexKey: 'currentShoesIndex' }
         };
     
-        const { locked, images, indexKey } = configs[category];
+        const { locked, images, indexKey } = configs[category]; // this line uses destructuring to extract the relevant config for the given category (top, bottom, or shoes) from the configs object, making it easier to work with the locked state, images array, and index key for that category in the rest of the method
         if (locked) return;
     
-        this[indexKey] = this[indexKey] > 0 ? this[indexKey] - 1 : images.length - 1;
+        this[indexKey] = this[indexKey] > 0 ? this[indexKey] - 1 : images.length - 1; // if not locked, update the current index for the category, wrapping around to the end if we go before the beginning
         this.displayOutfit();
     }
 }
 
-export default App;
+export default App; 
