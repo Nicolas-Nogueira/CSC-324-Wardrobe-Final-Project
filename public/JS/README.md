@@ -48,3 +48,45 @@
         - createClothCard - creates the HTML element for a clothing item card by creating a div with the class "item", creating an img element with the class "image" and setting its src and alt attributes to the link and name of the clothing item, appending the img element to the div, and then returning the div element
 
 
+Control Flow 
+- server.js brings user to index.html
+- index.html
+    - uses script to import App from "./JS/login.js"
+    - eventListener on Register and Login minor buttons toggles by calling addActiveTag
+    - If major registration button is clicked and user already exists then showError is called
+    - If major login button is clicked with incorrect details showError is called, if details are correct then window updates to home.html
+- home.html
+    - uses script to import App from "./JS/genOutfits.js"
+    - queryClothes is called which takes in data from credentials.json and clothes.json
+    - eventListeners on all arrows, locks, and the generate button, sidebar too.
+        - if Generate Button clicked:
+            - calls randomOutfit which calls displayOutfit
+            - displayOutfit calls OutfitIsValid in an if statement, which additionally calls getItemFilter as a helper function, if true updateImgElement is called, if false then randomOutfit without any changes in display
+        - if sidebar options are clicked/changed:
+            - calls filterItems which uses a helper function filterMatch
+        - if arrows are clicked:
+            - if it is a right arrow it will call the next function
+            - if it is a left arrow it will call the previous function
+            - both of these will call displayOutfit
+        - if lock is clicked:
+            - it will call toggle lock which changes unlocked items to locked, and locked items to unlocked
+- navbar can be clicked to switch into either home.html, wardrobe.html, or catalog.html
+- wardrobe.html
+    - uses script to import App from "./JS/wardrobe.js"
+    - calls queryClothes which takes in data from credentials.json and clothes.json, queryClothes calls createClothingItem
+    - has an event listener on the sidebar checkbox options when changed
+        - if sidebar options are clicked/changed:
+            - calls filterItems which uses a helper function filterMatch
+            - filterItems also calls createClothingItem
+    - createClothingItem uses new class CreateCard to make all the clothing item cards displayed on the wardrobe page
+    - createCard calls a function named CreateClothCard
+- catalog.html
+    - uses script to import App from "./JS/catalog.js"
+    - calls queryClothes which takes in data from credentials.json and clothes.json, queryClothes calls filterItems
+    - has an event listener on the sidebar checkbox options when changed
+        - if sidebar options are clicked/changed:
+            - calls filterItems which uses a helper function filterMatch
+            - filterItems calls renderItems
+    - renderItems calls class CreateCard which in turn calls CreateClothCard
+    - CreateClothCard makes the card as before but this time also adds + or x button to toggle ownership, that button has an eventListener which calls toggleItem when clicked
+    - toggleItem then calls filterItems again
