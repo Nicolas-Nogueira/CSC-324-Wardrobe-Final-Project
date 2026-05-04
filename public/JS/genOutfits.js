@@ -70,7 +70,16 @@ class App{ // main class that handles the outfit generation logic and user inter
         
         // Update the lock button image and aria-pressed
         const img = lockBtn.querySelector('img');
-        if (slot === 'top' ? this.topLocked : slot === 'bottoms' ? this.bottomLocked : this.shoesLocked) { 
+        let isLocked = false;
+        if (slot === 'top') {
+            isLocked = this.topLocked;
+        } else if (slot === 'bottoms') {
+            isLocked = this.bottomLocked;
+        } else if (slot === 'shoes') {
+            isLocked = this.shoesLocked;
+        }
+
+        if (isLocked) {
             img.src = 'images/locked.png';
             lockBtn.setAttribute('aria-pressed', 'true');
         } else {
