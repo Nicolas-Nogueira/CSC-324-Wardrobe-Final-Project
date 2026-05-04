@@ -22,6 +22,9 @@ class App{ // main class that handles the outfit generation logic and user inter
 
         this.queryClothes();
 
+        const generateBtn = document.querySelector("#generate-outfit-btn");
+        generateBtn.addEventListener("click", () => this.randomOutfit());
+
         this.filter = document.querySelector('#sidebar');
         this.filter.addEventListener('change',this.filterItems.bind(this)); // re-render items when filter changes
 
