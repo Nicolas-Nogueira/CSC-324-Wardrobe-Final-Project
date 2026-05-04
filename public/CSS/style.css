@@ -69,6 +69,9 @@ nav ul li a.active { /* styles the link for the current page */
     border: 2px solid var(--color-accent-1);
 }
 
+/* We used the info you sent us for the sidebar and found another link within that we used within our code.
+Alexis already knew about trnasitions before when he worked on his personal website.
+here is the link we used for the transitions: https://www.joshwcomeau.com/animation/css-transitions/
 /* SIDEBAR */
 .sidebar { /* styles the sidebar that contains the filters */
     position: fixed;
