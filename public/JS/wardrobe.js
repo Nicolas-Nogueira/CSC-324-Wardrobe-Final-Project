@@ -13,14 +13,10 @@ class App{ // This class handles all of the logic for the wardrobe page, includi
         this.allBottomImages = [];
         this.allFootwearImages = [];
 
-        this.init();
+        this.queryClothes();
 
         this.filter = document.querySelector('#sidebar');
         this.filter.addEventListener('change',this.filterItems.bind(this)); // adds an event listener to the sidebar to listen for changes to the checkboxes and call the filterItems method to update the displayed items based on which checkboxes are checked
-    }
-
-    async init() { // this method initializes the page by querying the user's wardrobe from the server and creating the clothing item cards
-        await this.queryClothes();
     }
 
     // This method maps each image to its corresponding clothing row and creates a new card for every item added.
@@ -40,7 +36,7 @@ class App{ // This class handles all of the logic for the wardrobe page, includi
         itemsMappedFootwear.forEach(el => this.footwearContainer.appendChild(el)); // for each element in the itemsMappedFootwear array, append it to the footwearContainer in the HTML to display it on the page
     }
 
-    //this method fetches the clothes from the json and pushes them to there correct array
+    //this method fetches the clothes from the json and user ownership and pushes the owned clothes to their correct array
     async queryClothes(){
         // fetch user
         const userResponse = await fetch("./user");

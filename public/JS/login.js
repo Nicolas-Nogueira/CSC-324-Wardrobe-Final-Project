@@ -3,7 +3,7 @@ Here is the link to the tutorial: https://youtu.be/p1GmFCGuVjw?si=HVDteNE2P8vS0R
 */
 
 class App{ // This class handles all of the login and registration logic for the login page
-    constructor(){
+    constructor(){ // makes instance variables from querySelectors, calls addActiveTag to determine to whether you are on login or registration, adds eventListeners on both login and register on submit events.
         this.wrapper = document.querySelector('.login-page-wrapper');
         this.loginLink = document.querySelector('.login-link');
         this.registerLink = document.querySelector('.register-link');
