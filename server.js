@@ -1,11 +1,11 @@
 import express from 'express';
 import fs from 'fs';
-import credentials from './Data/credentials.json' with { type: 'json' };
+import credentials from './Data/credentials.json' with { type: 'json' }; // import the credentials object from the credentials.json file which contains the usernames, passwords, and wardrobes of all users in the system
 
 const app = express();
 
 app.use(express.json());
-app.use(express.static('public'));  
+app.use(express.static('public')); 
 
 // handle user login by POST
 app.post('/login', function(req, res){
@@ -30,7 +30,7 @@ app.post('/login', function(req, res){
 // handle user registration by POST
 app.post('/register', function(req, res){
     const username = req.body.username;
-    const existingUser = credentials[username];
+    const existingUser = credentials[username]; 
 
     if(existingUser !== undefined){ // if the username already exists in the database 
         res.json({ success: false, message: 'Username is already taken.' }); // send a failure message stating that the username has already been taken
@@ -57,28 +57,28 @@ app.post('/register', function(req, res){
 app.get('/user', function(req, res){
     const currentUser = credentials['AlexisC']; // hardcode the currently logged in user
 
-    res.json({
+    res.json({ // send the username and wardrobe of the current user to the client
         username: currentUser.username,
         wardrobe: currentUser.wardrobe
     });
 
 });
 
-app.post('/save-wardrobe', function(req, res) {
-    credentials[req.body.username].wardrobe = req.body.wardrobe;
+app.post('/save-wardrobe', function(req, res) { // this handler gets the updated wardrobe and updates cred obj with new wardrobe and then writes the updated cred obj to the credentials.json file
+    credentials[req.body.username].wardrobe = req.body.wardrobe; // update the credentials object with the new wardrobe for the user
     
-    fs.writeFile('./Data/credentials.json', JSON.stringify(credentials, null, 2), 'utf-8', function(err) {
+    fs.writeFile('./Data/credentials.json', JSON.stringify(credentials, null, 2), 'utf-8', function(err) { // write the updated credentials object to the credentials.json file
         if (err) {
             console.log(err);
-            res.status(500).json({ message: "Failed to save" });
+            res.status(500).json({ message: "Failed to save" }); // send a failure response if there was an error writing to the file
         } else {
             console.log("Data written successfully");
-            res.status(200).json({ message: "Success" });
+            res.status(200).json({ message: "Success" }); // send a success response if the file was written successfully
         }
     });
 });
 
-app.listen(3000, function(err){
+app.listen(3000, function(err){ // start the server on port 3000. log a message to the console indicating that the server is listening. log an error if there was an issue starting the server
     if(err) console.log(err);
     else console.log('Server listening on port 3000');
 })
