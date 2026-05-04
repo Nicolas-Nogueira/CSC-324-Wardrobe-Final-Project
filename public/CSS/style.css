@@ -1,5 +1,5 @@
 /* STYLING */
-:root {
+:root { /* defining color variables for the entire stylesheet */
     --color-base: #F5F4F0;
     --color-text: #0F0F0F;
     --color-accent-1: #A6AAA0;
@@ -7,7 +7,7 @@
     --color-cta: #9A6E5F;
 }
 
-body {
+body { /* styles the entire body of the page */
     background-color: var(--color-base);
     color: var(--color-text);
     padding-top: 80px;
@@ -16,7 +16,7 @@ body {
 
 /* NAVBAR */
 
-nav {
+nav { /* styles the navigation bar */
     position: fixed; /* always stays on screen */
     z-index: 10;
     top: 0;
@@ -35,18 +35,18 @@ nav {
     margin-right: 50px;
 }
 
-nav ul {
+nav ul { /* styles the unordered list in the nav bar */
     list-style: none; /* removes bullet points */
     display: flex;
     justify-content: start; /* aligns items to the left of adaptive flex box*/
     padding: 10px;
 }
 
-nav ul li {
+nav ul li { /* styles each list item in the nav bar */
     margin: 0 20px; /* adds space between list items */
 }
 
-nav ul li a {
+nav ul li a { /* styles the links in the nav bar */
     color: var(--color-text);
     text-decoration: none; /* removes underline */
     font-weight: bold;
@@ -54,15 +54,15 @@ nav ul li a {
     padding-bottom: 2px; /* adds space for the border to be below the page titles */
 }
 
-nav ul li a:hover {
+nav ul li a:hover { /* styles the links in the nav bar on hover */
     border-bottom: 2px solid var(--color-cta);/* white line under page when hovering */
 }
 
-nav ul li a.active {
+nav ul li a.active { /* styles the link for the current page */
     border-bottom: 2px solid var(--color-cta); /* white line under current page */
 }
 
-.profile-pic {
+.profile-pic { /* styles the profile picture in the nav bar */
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -70,7 +70,7 @@ nav ul li a.active {
 }
 
 /* SIDEBAR */
-.sidebar {
+.sidebar { /* styles the sidebar that contains the filters */
     position: fixed;
     top: 82px;
     left: -260px; /* leave some visible area */
@@ -84,7 +84,7 @@ nav ul li a.active {
     border-right: 1px solid var(--color-accent-2);
 }
 
-.sidebar-toggle {
+.sidebar-toggle { /* styles the button that toggles the sidebar open and closed */
     position: absolute; /* keeps the toggle button in the top right of the sidebar */
     top: 0;
     right: 0;
@@ -95,25 +95,25 @@ nav ul li a.active {
     cursor: pointer;
 }
 
-.sidebar-toggle img {
+.sidebar-toggle img { /* styles the image inside the toggle button */
     width: 22px;
     height: 22px;
 }
 
-.sidebar-toggle:hover {
+.sidebar-toggle:hover { /* styles the toggle button on hover */
     background: lightgray; /* gives lightgray background around the toggle button to indicate it is clickable */
     border-radius: 10%;
 }
 
-.sidebar.open {
+.sidebar.open { /* when the sidebar has the "open" class, this styles it to be fully visible */
     left: 0; /* when open it becomes visible */
 }
 
-.filter-section {
+.filter-section { /* styles each section of filters (e.g. color, pattern, etc.) */
     margin-bottom: 25px; /* add space between different filter categories */
 }
 
-.filter-section h4 {
+.filter-section h4 { /* styles the heading for each filter category */
     font-size: 1rem;
     margin-top: 0px; /* no extra space on top so the first title stays at the top but separating each category with bottom margin */
     margin-bottom: 10px;
@@ -121,7 +121,7 @@ nav ul li a.active {
     text-transform: uppercase; /* makes category titles uppercase */
 }
 
-.filter-section label {
+.filter-section label { /* styles the label for each filter option */
     display: flex;
     align-items: center;
     gap: 8px;
@@ -140,28 +140,29 @@ nav ul li a.active {
 }
 
 /* Wardrobe Clothing Rows */
-.tops h2 {
+
+.tops h2 { /* styles the heading for the tops section */
     margin-top: 2rem; /* moves title down from top of page */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.bottoms h2 {
+.bottoms h2 { /* styles the heading for the bottoms section */
     margin-top: 3rem; /* moves title down from bottom of last container */
     display: flex;
     justify-content: center; 
     align-items: center;
 }
 
-.footwear h2 {
+.footwear h2 { /* styles the heading for the footwear section */
     margin-top: 3rem;
     display: flex;
     justify-content: center; 
     align-items: center;
 }
 
-.item-container {
+.item-container { /* styles the container that holds each row of clothing items (tops, bottoms, footwear) */
     display: grid;
     grid-auto-flow: column; /* lays items out horizontally instead of vertically */
     grid-auto-columns: 300px; /* gives items fixed width */
@@ -177,14 +178,13 @@ nav ul li a.active {
     }
 }
 
-.image {
+.image { /* styles the images of the clothing items */
     max-width: 100%; /* keeps image inside container */
-    height: auto;
+    height: 100%; /* makes image fill container height */
     border-radius: 10%;
 }
 
-/* adds style to area around image */
-.item {
+.item { /* adds style to area around image */
     position: relative;
     padding: 10px;
     background-color: var(--color-accent-2);
@@ -194,13 +194,13 @@ nav ul li a.active {
     display: grid;
 }
 
-.item .item-section {
+.item .item-section { /* styles the section inside each item card that contains the image and the delete button */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* spreads content evenly inside card */
 }
 
-.card-btn {
+.card-btn { /* styles the delete button on each item card */
     position: absolute;
     top: 8px;
     right: 8px;
@@ -215,9 +215,7 @@ nav ul li a.active {
 
 /* outfit-generator */
 
-
-/* container that holds all three slots */
-#outfit-generator .clothing-container {
+#outfit-generator .clothing-container { /* container that holds all three slots */
     display: flex;
     flex-direction: column;   
     align-items: center;
@@ -225,8 +223,7 @@ nav ul li a.active {
     margin: 2rem auto;
   }
   
-  /* each clothing box */
-  .clothing-windows {
+  .clothing-windows { /* each clothing box */
     display: flex;            
     align-items: center;
     justify-content: center;
@@ -243,8 +240,7 @@ nav ul li a.active {
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
   
-  /* middle area: image + lock */
-  .clothing-display {
+  .clothing-display { /* middle area: image + lock */
     display: flex;
     flex-direction: column;   
     align-items: center;
@@ -253,20 +249,11 @@ nav ul li a.active {
     gap: 0.5rem;
     margin: 0;
   }
-  
-  /* clothing image: larger but contained */
-  .clothing-display > img {
-    max-width: 100%;
-    max-height: 220px;        
-    height: auto;
-    display: block;
-    object-fit: contain;
-  }
 
 /* main clothing images (top, bottoms, shoes) */
 #top-image,
 #bottom-image,
-#shoes-image {
+#shoes-image { /* styles the images in the outfit generator slots */
   max-width: 100%;
   max-height: 220px;
   height: auto;
@@ -274,25 +261,24 @@ nav ul li a.active {
   object-fit: contain;
 }
 
-  /* keep your arrow look; just positioned by flex row now */
-  .clothing-windows.locked {
+.clothing-windows.locked { /* when a clothing slot is locked, this styles the entire slot to indicate it is locked */
     opacity: 0.7;
     background-color: rgba(154, 110, 95, 0.1);
 }
 
 .clothing-windows.locked .arrow-btn-left-arrow,
-.clothing-windows.locked .arrow-btn-right-arrow {
+.clothing-windows.locked .arrow-btn-right-arrow { /* hides the arrow buttons when the slot is locked */
     opacity: 0.5;
     cursor: not-allowed;
 }
   
-  .lock-btn img {
+  .lock-btn img { /* styles the lock icon inside the lock button */
     width: 32px;             
     height: 32px;
     display: block;
   }
 
-  #generate-outfit-btn {
+  #generate-outfit-btn { /* styles the button that generates a new outfit */
     background-color: var(--color-light);      
     color: var(--color-cta);                  
     border: 2px solid var(--color-cta);      
@@ -303,12 +289,12 @@ nav ul li a.active {
     cursor: pointer;
   }
   
-  #generate-outfit-btn:hover {
+  #generate-outfit-btn:hover { /* styles the generate outfit button on hover */
     background-color: var(--color-cta);       
     color: var(--color-light);                
   }
   
-  #generate-outfit-btn:active {
+  #generate-outfit-btn:active { /* styles the generate outfit button when clicked */
     background-color: var(--color-cta-dark);  
     color: var(--color-light);
   }

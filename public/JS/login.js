@@ -1,4 +1,6 @@
-/* For the login page I did use some help from a tutorial for the best way of handleing login/registraion switching */
+/* For the login page I did use some help from a tutorial for the best way of handleing login/registraion switching 
+Here is the link to the tutorial: https://youtu.be/p1GmFCGuVjw?si=HVDteNE2P8vS0R5Y
+*/
 
 class App{
     constructor(){

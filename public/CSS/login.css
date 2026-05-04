@@ -1,4 +1,6 @@
-/* Had some help from tutorial to help make the login page look nice */
+/* Had some help from tutorial to help make the login page look nice 
+Here is the link to the tutorial: https://youtu.be/p1GmFCGuVjw?si=HVDteNE2P8vS0R5Y
+*/
 
 * {
     box-sizing: border-box; /* ensures padding/border don’t increase element size */
@@ -13,7 +15,7 @@ body {
 
 /* LOGIN PAGE */
 
-.background {
+.background { /* styles the background image for the login page */
     position: fixed;       
     top: 0;
     left: 0;
@@ -22,7 +24,7 @@ body {
     object-fit: cover; /* makes background image fill the screen without distortion */  
 }
 
-.login-page-wrapper {
+.login-page-wrapper { /* styles the container for the login/registration forms */
     position: relative;
     width: 400px;
     height: 440px;
@@ -30,46 +32,46 @@ body {
     border:2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(40px); /* creates the blur effect where the login/registration info is displayed*/
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* adds a subtle shawdow for better visibility */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden; /* hides sliding forms when they move */
 }
 
-.login-page-wrapper .form-box {
+.login-page-wrapper .form-box { /* styles both the login and registration forms */
     width: 100%;
     padding: 40px; 
 }
 
-.login-page-wrapper .form-box.login {
+.login-page-wrapper .form-box.login { /* styles the login form */
     transition: transform 0.18s ease;
     transform: translateX(0); /* login form starts visible */
 }
 
-.login-page-wrapper.active .form-box.login {
+.login-page-wrapper.active .form-box.login { /* when active class is added, this styles the login form to slide out */
     transition: none;
     transform: translateX(-400px); /* slides login form out to the left */
 }
 
-.login-page-wrapper .form-box.register {
+.login-page-wrapper .form-box.register { /* styles the registration form */
     position: absolute;
     transition: none;
     transform: translateX(400px); /* starts off-screen to the right */
 }
 
-.login-page-wrapper.active .form-box.register {
+.login-page-wrapper.active .form-box.register { /* when active class is added, this styles the registration form to slide in */
     transition: transform 0.18s ease;
     transform: translateX(0); /* slides into view */
 }
 
-.form-box h2 {
+.form-box h2 { /* styles the heading for both forms */
     font-size: 2em;
     color: #000000;
     text-align: center;
 }
 
-.input-box {
+.input-box { /* styles the container for each input field and its label */
     position: relative;
     width: 100%;
     height: 50px;
@@ -77,7 +79,7 @@ body {
     margin: 30px 0;
 }
 
-.input-box label {
+.input-box label { /* styles the label for each input field */
     position: absolute;
     top: 50%;
     left: 5px;
@@ -89,12 +91,12 @@ body {
     transition: 0.5s;
 }
 
-.input-box input:focus~label,
+.input-box input:focus~label, /* when input is focused, this styles the label to move up */
 .input-box input:valid~label {
     top: -5px; /* moves label up when typing */
 }
 
-.input-box input {
+.input-box input { /* styles the input fields */
     width: 100%;
     height: 100%;
     background: transparent;
@@ -106,30 +108,7 @@ body {
     padding: 0 35px 0 5px;
 }
 
-.remember-forgot {
-    font-size: 0.9em;
-    color: #000000;
-    font-weight: 500;
-    margin: -15px 0 15px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.remember-forgot label input {
-    accent-color: #000000; /* styles checkbox color */
-    margin-right: 3px;
-}
-
-.remember-forgot a {
-    color: #000000;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
-}
-
-.btn {
+.btn { /* styles the submit buttons for both forms */
     width: 100%;
     height: 45px;
     background: #1e01f2;
@@ -142,11 +121,11 @@ body {
     border-radius: 25px;
 }
 
-.btn:hover {
+.btn:hover { /* styles the submit buttons on hover */
     background: #9078ed;
 }
 
-.login-register {
+.login-register { /* styles the container for the "Don't have an account? Register" text and link */
     font-size: 0.9em;
     color: #000000;
     font-weight: 500;
@@ -154,21 +133,21 @@ body {
     margin: 25px 0 10px;
 }
 
-.login-register a {
+.login-register a { /* styles the "Register" link */
     color: #000000;
     text-decoration: none;
     font-weight: 600;
 }
 
-.login-register a:hover {
+.login-register a:hover { /* styles the "Register" link on hover */
     text-decoration: underline;
 }
 
-.hidden {
+.hidden { /* utility class to hide elements, used for error messages */
     display: none;
 }
 
-.form-error {
+.form-error { /* styles the error message that appears when login/registration fails */
     background: #ff4d4d;
     color: #fff;
     padding: 10px;
