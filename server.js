@@ -45,7 +45,7 @@ app.post('/register', function(req, res){
 
     // update the credentials.json file with the new credentials object containing the new user
     fs.writeFile('./Data/credentials.json', JSON.stringify(credentials, null, 4), 'utf-8', function(err){
-        if(err) console.log(error);
+        if(err) console.log(err);
         else console.log('Credentials saved to Data/credentials.json');
     })
 

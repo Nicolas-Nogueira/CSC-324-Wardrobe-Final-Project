@@ -69,6 +69,12 @@ nav ul li a.active { /* styles the link for the current page */
     border: 2px solid var(--color-accent-1);
 }
 
+@media (width < 690px) { /* makes navbar title fonts smaller when looking on phone screen */
+    nav ul li a { /* styles the links in the nav bar */
+        font-size: 1rem;
+    }
+}
+
 /* We used the info you sent us for the sidebar and found another link within that we used within our code.
 Alexis already knew about trnasitions before when he worked on his personal website.
 here is the link we used for the transitions: https://www.joshwcomeau.com/animation/css-transitions/
@@ -85,6 +91,10 @@ here is the link we used for the transitions: https://www.joshwcomeau.com/animat
     transition: left 0.3s ease;
     padding: 20px;
     border-right: 1px solid var(--color-accent-2);
+
+    @media (width < 690px) { /* moves sidebar slightly more hidden to create more space on phone screen for item windows */
+        left: -278px;
+    }
 }
 
 .sidebar-toggle { /* styles the button that toggles the sidebar open and closed */
@@ -241,6 +251,10 @@ here is the link we used for the transitions: https://www.joshwcomeau.com/animat
     border-radius: 10px;
     background-color: var(--color-base);
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+    @media (width < 690px) {
+        max-width: 270px;
+    }
   }
   
   .clothing-display { /* middle area: image + lock */
