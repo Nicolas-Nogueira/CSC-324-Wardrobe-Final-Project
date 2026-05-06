@@ -91,5 +91,3 @@ Control Flow
     - CreateClothCard makes the card as before but this time also adds + or x button to toggle ownership, that button has an eventListener which calls toggleItem when clicked
     - toggleItem then calls filterItems again
 - profile pic element in navbar has eventListener which takes you back to index.html when clicked
-
-![Control Flow Diagram](./Control_flow.jpg)
