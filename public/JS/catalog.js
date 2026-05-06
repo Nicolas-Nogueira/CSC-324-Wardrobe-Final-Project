@@ -1,4 +1,4 @@
-class App { // main class that handles fetching clothing data, rendering items, filtering items, and toggling ownership of items
+class App {
     constructor() { // containers for owned and unowned items
         this.ownedContainer = document.querySelector("#owned");
         this.unownedContainer = document.querySelector("#unowned");

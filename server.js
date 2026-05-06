@@ -76,6 +76,8 @@ app.post('/save-wardrobe', function(req, res) { // this handler gets the updated
             res.status(200).json({ message: "Success" }); // send a success response if the file was written successfully
         }
     });
+
+    
 });
 
 app.listen(3000, function(err){ // start the server on port 3000. log a message to the console indicating that the server is listening. log an error if there was an issue starting the server
