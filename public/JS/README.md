@@ -92,4 +92,4 @@ Control Flow
     - toggleItem then calls filterItems again
 - profile pic element in navbar has eventListener which takes you back to index.html when clicked
 
-![Control Flow Diagram](./images/Control_flow.jpg)
+![Control Flow Diagram](./public/images/Control_flow.jpg)
